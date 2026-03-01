@@ -15,80 +15,80 @@ import {
   Flame,
 } from "lucide-react";
 
-const categories = ["All", "Beginner", "Intermediate", "Advanced", "AI-Powered"];
+const categories = ["All", "AI-Powered", "DSA & Interviews", "Intermediate", "Beginner"];
 
 const programs = [
   {
     id: 1,
-    icon: Code2,
-    title: "Full Stack Development",
-    subtitle: "React, Node.js, Next.js & more",
+    icon: Brain,
+    title: "AI & Machine Learning",
+    subtitle: "Python, TensorFlow, LLMs & Generative AI",
     description:
-      "Build production-grade web apps from scratch. Master React, Node.js, databases, APIs, and deployment on cloud platforms.",
+      "Our flagship program. Go from fundamentals to deploying production LLMs and Generative AI apps — with human-centered design thinking woven throughout.",
+    duration: "5 months",
+    students: "2,100+",
+    rating: 4.9,
+    badge: "⭐ Flagship",
+    badgeColor: "bg-purple-600",
+    category: "AI-Powered",
+    tags: ["Python", "PyTorch", "LLMs", "LangChain"],
+    color: "#a855f7",
+    gradient: "from-purple-700 to-[#29abe2]",
+    price: "₹29,999",
+    originalPrice: "₹59,999",
+  },
+  {
+    id: 2,
+    icon: GitBranch,
+    title: "DSA & System Design",
+    subtitle: "Master algorithms, problem-solving & architecture",
+    description:
+      "Crack FAANG interviews with deep DSA mastery — plus system design thinking to architect scalable, real-world solutions that solve real user problems.",
+    duration: "4 months",
+    students: "4,800+",
+    rating: 4.9,
+    badge: "🔥 Most Enrolled",
+    badgeColor: "bg-[#f5a623]",
+    category: "DSA & Interviews",
+    tags: ["Arrays", "DP", "Graphs", "HLD/LLD"],
+    color: "#f5a623",
+    gradient: "from-amber-500 to-[#f97316]",
+    price: "₹19,999",
+    originalPrice: "₹39,999",
+  },
+  {
+    id: 3,
+    icon: Code2,
+    title: "Full Stack + AI Integration",
+    subtitle: "React, Node.js & AI-powered applications",
+    description:
+      "Build modern full-stack applications powered by AI APIs. Learn to integrate LLMs, vector databases, and AI features into production web apps.",
     duration: "6 months",
     students: "3,200+",
-    rating: 4.9,
-    badge: "Most Popular",
+    rating: 4.8,
+    badge: "AI-Powered",
     badgeColor: "bg-[#29abe2]",
-    category: "Intermediate",
-    tags: ["React", "Node.js", "MongoDB", "AWS"],
+    category: "AI-Powered",
+    tags: ["React", "Node.js", "OpenAI API", "RAG"],
     color: "#29abe2",
     gradient: "from-[#1a237e] to-[#29abe2]",
     price: "₹24,999",
     originalPrice: "₹49,999",
   },
   {
-    id: 2,
-    icon: GitBranch,
-    title: "DSA & Competitive Programming",
-    subtitle: "Master problem solving for top tech companies",
-    description:
-      "Crack FAANG interviews with deep mastery of data structures, algorithms, and competitive coding from scratch to advanced.",
-    duration: "4 months",
-    students: "4,800+",
-    rating: 4.8,
-    badge: "Interview Ready",
-    badgeColor: "bg-[#f5a623]",
-    category: "Advanced",
-    tags: ["Arrays", "Trees", "DP", "Graphs"],
-    color: "#f5a623",
-    gradient: "from-[#f5a623] to-[#fbbf24]",
-    price: "₹19,999",
-    originalPrice: "₹39,999",
-  },
-  {
-    id: 3,
-    icon: Brain,
-    title: "AI & Machine Learning",
-    subtitle: "Python, TensorFlow, LLMs & Generative AI",
-    description:
-      "From ML fundamentals to deploying LLMs and building Generative AI apps. Learn with real industry projects.",
-    duration: "5 months",
-    students: "2,100+",
-    rating: 4.9,
-    badge: "🔥 Trending",
-    badgeColor: "bg-purple-500",
-    category: "AI-Powered",
-    tags: ["Python", "PyTorch", "LLMs", "LangChain"],
-    color: "#a855f7",
-    gradient: "from-purple-600 to-[#29abe2]",
-    price: "₹29,999",
-    originalPrice: "₹59,999",
-  },
-  {
     id: 4,
     icon: Database,
-    title: "Backend Engineering",
-    subtitle: "System design, databases & microservices",
+    title: "Backend & System Design",
+    subtitle: "Scalable architecture, databases & microservices",
     description:
-      "Deep dive into backend development with scalable architecture, microservices, caching, messaging queues, and system design.",
+      "Deep dive into backend engineering with real-world system design. Learn to build for scale with microservices, caching, and distributed systems.",
     duration: "4 months",
     students: "1,500+",
     rating: 4.7,
     badge: "New Batch",
     badgeColor: "bg-[#22c55e]",
-    category: "Advanced",
-    tags: ["Node.js", "PostgreSQL", "Redis", "Docker"],
+    category: "Intermediate",
+    tags: ["Node.js", "PostgreSQL", "Redis", "System Design"],
     color: "#22c55e",
     gradient: "from-[#22c55e] to-[#16a34a]",
     price: "₹22,999",
@@ -100,7 +100,7 @@ const programs = [
     title: "Cloud & DevOps",
     subtitle: "AWS, Docker, Kubernetes & CI/CD",
     description:
-      "Master cloud infrastructure, containerization, orchestration, and automated deployments for modern software delivery.",
+      "Master cloud infrastructure and DevOps pipelines. Deploy AI models and full-stack apps with confidence using industry-standard tools.",
     duration: "3 months",
     students: "980+",
     rating: 4.8,
@@ -116,10 +116,10 @@ const programs = [
   {
     id: 6,
     icon: Layers,
-    title: "IT Fundamentals Bootcamp",
-    subtitle: "Zero to job-ready in 2 months",
+    title: "IT Foundations Bootcamp",
+    subtitle: "Zero to job-ready — Python, Web & Linux",
     description:
-      "Perfect for freshers. Programming basics, web fundamentals, Git, Linux, and career readiness — get your first IT job faster.",
+      "The perfect launchpad for freshers. Build your programming foundation, understand how the internet works, and get career-ready fast.",
     duration: "2 months",
     students: "5,600+",
     rating: 4.6,
@@ -152,12 +152,13 @@ export default function Programs() {
             Our Programs
           </div>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-4">
-            Learn What the{" "}
-            <span className="gradient-text">Industry Demands</span>
+            AI & DSA First.{" "}
+            <span className="gradient-text">Everything Else Next.</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hands-on, project-based programs designed by industry experts to make
-            you job-ready from day one.
+            Our core focus is AI/ML and DSA. We teach you to think, design, and
+            build — not just write code. DevOps, Cloud & Full Stack are part of
+            a complete engineer&apos;s toolkit.
           </p>
         </div>
 

@@ -4,16 +4,16 @@ import { useEffect, useRef } from "react";
 import { ArrowRight, Play, CheckCircle, Sparkles, Zap } from "lucide-react";
 
 const highlights = [
-  "Industry-aligned curriculum",
-  "AI-powered learning paths",
-  "100% placement support",
+  "AI & ML — core focus",
+  "DSA for top tech interviews",
+  "Human-centered system design",
 ];
 
 const floatingBadges = [
-  { label: "DSA Mastery", icon: "⚡", color: "bg-amber-500", delay: "0s" },
-  { label: "AI & ML", icon: "🤖", color: "bg-purple-500", delay: "1.5s" },
-  { label: "Full Stack", icon: "🚀", color: "bg-green-500", delay: "3s" },
-  { label: "Cloud Ready", icon: "☁️", color: "bg-cyan-500", delay: "0.8s" },
+  { label: "AI & GenAI", icon: "🤖", color: "bg-purple-500", delay: "0s" },
+  { label: "DSA Mastery", icon: "⚡", color: "bg-amber-500", delay: "1.5s" },
+  { label: "System Design", icon: "🏗️", color: "bg-cyan-500", delay: "3s" },
+  { label: "Cloud & DevOps", icon: "☁️", color: "bg-green-500", delay: "0.8s" },
 ];
 
 export default function Hero() {
@@ -116,25 +116,23 @@ export default function Hero() {
             {/* Tag */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6 text-white text-sm font-semibold backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-[#f5a623]" />
-              India&apos;s #1 IT Training & Placement Platform
+              India&apos;s Premier AI, ML & DSA Training Platform
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6">
-              Transform Your
+              Master{" "}
+              <span className="gradient-text-gold">AI, ML</span>
               <br />
-              Career with{" "}
-              <span className="relative inline-block">
-                <span className="gradient-text-gold">Expert</span>
-              </span>
+              & DSA — Beyond
               <br />
-              IT Training
+              Just Coding
             </h1>
 
             <p className="text-lg text-white/80 max-w-xl mb-8 leading-relaxed">
-              Master Full Stack, DSA, AI & Cloud technologies with hands-on
-              projects and mentorship from industry experts. Get placed in top
-              tech companies.
+              We go beyond syntax. Learn to think like an engineer — master AI,
+              DSA, system design, and human-centered problem solving with
+              mentorship from active software industry experts.
             </p>
 
             {/* Highlights */}
@@ -217,10 +215,10 @@ export default function Hero() {
 
                 {/* Progress bars */}
                 {[
-                  { skill: "Full Stack Dev", pct: 78, color: "#29abe2" },
-                  { skill: "DSA & Algorithms", pct: 65, color: "#f5a623" },
-                  { skill: "AI & ML", pct: 52, color: "#22c55e" },
-                  { skill: "System Design", pct: 40, color: "#a855f7" },
+                  { skill: "AI & Machine Learning", pct: 88, color: "#a855f7" },
+                  { skill: "DSA & Algorithms", pct: 82, color: "#f5a623" },
+                  { skill: "System Design", pct: 74, color: "#29abe2" },
+                  { skill: "Cloud & DevOps", pct: 58, color: "#22c55e" },
                 ].map((item) => (
                   <div key={item.skill} className="mb-4">
                     <div className="flex justify-between text-sm mb-1">
@@ -243,15 +241,15 @@ export default function Hero() {
 
                 {/* Achievement */}
                 <div className="mt-4 p-3 bg-white/10 rounded-2xl flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#f5a623] flex items-center justify-center text-xl">
-                    🏆
+                  <div className="w-10 h-10 rounded-xl bg-[#a855f7] flex items-center justify-center text-xl">
+                    🤖
                   </div>
                   <div>
                     <div className="text-white text-sm font-semibold">
-                      Achievement Unlocked!
+                      AI Project Deployed!
                     </div>
                     <div className="text-white/60 text-xs">
-                      DSA Streak — 21 days
+                      LLM-powered app — live in production
                     </div>
                   </div>
                 </div>
