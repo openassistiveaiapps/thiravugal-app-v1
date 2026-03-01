@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import AIQuotes from "@/components/AIQuotes";
 import BeyondCoding from "@/components/BeyondCoding";
+import RealWorldSystems from "@/components/RealWorldSystems";
 import Programs from "@/components/Programs";
 import Audience from "@/components/Audience";
 import Mentors from "@/components/Mentors";
@@ -20,6 +21,7 @@ export default function Home() {
       <Stats />
       <AIQuotes />
       <BeyondCoding />
+      <RealWorldSystems />
       <Programs />
       <Audience />
       <Mentors />
