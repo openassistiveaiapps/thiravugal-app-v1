@@ -134,9 +134,9 @@ export default function BeyondCoding() {
         </div>
 
         {/* Interactive pillars */}
-        <div className="grid lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
           {/* Pillar nav */}
-          <div className="space-y-3">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
             {pillars.map(p => {
               const PIcon = p.icon;
               return (
@@ -174,8 +174,8 @@ export default function BeyondCoding() {
           </div>
 
           {/* Pillar detail */}
-          <div className="lg:col-span-2">
-            <div className={`h-full bg-gradient-to-br ${activePillar.bg} border ${activePillar.border} rounded-3xl p-8`}>
+          <div className="lg:col-span-2 col-span-2 lg:col-span-2">
+            <div className={`h-full bg-gradient-to-br ${activePillar.bg} border ${activePillar.border} rounded-2xl sm:rounded-3xl p-5 sm:p-8`}>
               <div className="flex items-start gap-4 mb-5">
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0"
@@ -209,33 +209,35 @@ export default function BeyondCoding() {
           </div>
         </div>
 
-        {/* Comparison table */}
-        <div className="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
-          <div className="grid grid-cols-2">
-            <div className="bg-gray-200/60 px-6 py-4 flex items-center gap-2">
-              <span className="text-2xl">😐</span>
-              <span className="font-display font-bold text-gray-600">Traditional Training</span>
+        {/* Comparison table — horizontally scrollable on small screens */}
+        <div className="bg-gray-50 rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 overflow-x-auto">
+          <div className="min-w-[480px]">
+            <div className="grid grid-cols-2">
+              <div className="bg-gray-200/60 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2">
+                <span className="text-xl sm:text-2xl">😐</span>
+                <span className="font-display font-bold text-gray-600 text-sm sm:text-base">Traditional Training</span>
+              </div>
+              <div className="bg-gradient-to-r from-[#1a237e] to-[#29abe2] px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2">
+                <span className="text-xl sm:text-2xl">⚡</span>
+                <span className="font-display font-bold text-white text-sm sm:text-base">Thiravugal Approach</span>
+              </div>
             </div>
-            <div className="bg-gradient-to-r from-[#1a237e] to-[#29abe2] px-6 py-4 flex items-center gap-2">
-              <span className="text-2xl">⚡</span>
-              <span className="font-display font-bold text-white">Thiravugal Approach</span>
-            </div>
+            {comparison.map((row, i) => (
+              <div
+                key={i}
+                className={`grid grid-cols-2 divide-x divide-gray-200 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}
+              >
+                <div className="px-4 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3 text-gray-500 text-xs sm:text-sm">
+                  <span className="text-gray-400 mt-0.5 shrink-0">✗</span>
+                  {row.traditional}
+                </div>
+                <div className="px-4 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3 text-gray-800 text-xs sm:text-sm font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#22c55e] shrink-0 mt-0.5" />
+                  {row.thiravugal}
+                </div>
+              </div>
+            ))}
           </div>
-          {comparison.map((row, i) => (
-            <div
-              key={i}
-              className={`grid grid-cols-2 divide-x divide-gray-200 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}
-            >
-              <div className="px-6 py-4 flex items-center gap-3 text-gray-500 text-sm">
-                <span className="text-gray-400 text-base">✗</span>
-                {row.traditional}
-              </div>
-              <div className="px-6 py-4 flex items-center gap-3 text-gray-800 text-sm font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0" />
-                {row.thiravugal}
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Bottom tagline */}

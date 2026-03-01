@@ -136,22 +136,22 @@ export default function AIQuotes() {
           <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
             <span>🌐</span> World Leaders on AI
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4">
             The AI Era Is{" "}
             <span className="bg-gradient-to-r from-purple-400 to-[#29abe2] bg-clip-text text-transparent">
               Already Here
             </span>
           </h2>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base sm:text-xl max-w-2xl mx-auto">
             The world&apos;s top technology leaders agree — AI literacy is the most
             critical skill of this generation.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* AI Illustration panel */}
-          <div className="relative">
-            <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 aspect-square flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mb-10 sm:mb-16">
+          {/* AI Illustration panel — hidden on mobile */}
+          <div className="hidden md:block relative">
+            <div className="bg-gray-900 border border-white/10 rounded-3xl p-6 sm:p-8 aspect-square flex flex-col items-center justify-center relative overflow-hidden">
               {/* Rotating ring */}
               <div className="absolute inset-6 rounded-full border border-[#29abe2]/20 animate-spin"
                 style={{ animationDuration: "20s" }} />
@@ -188,7 +188,7 @@ export default function AIQuotes() {
 
           {/* Quote panel */}
           <div>
-            <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 lg:p-10 relative">
+            <div className="bg-gray-900 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 relative">
               <Quote className="absolute top-6 right-6 w-10 h-10 text-white/5" />
 
               {/* Author avatar */}
@@ -213,7 +213,7 @@ export default function AIQuotes() {
                 </div>
               </div>
 
-              <p className="text-gray-200 text-lg leading-relaxed italic mb-8">
+              <p className="text-gray-200 text-sm sm:text-base lg:text-lg leading-relaxed italic mb-6 sm:mb-8">
                 &ldquo;{quotes[active].text}&rdquo;
               </p>
 
@@ -258,7 +258,7 @@ export default function AIQuotes() {
         </div>
 
         {/* Bottom stat bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {[
             { icon: "🌍", stat: "85M+", label: "New AI jobs by 2025", color: "#29abe2" },
             { icon: "📈", stat: "40%", label: "Higher salaries for AI skills", color: "#f5a623" },

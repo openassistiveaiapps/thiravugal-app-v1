@@ -76,23 +76,23 @@ export default function Placements() {
     <section id="placements" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <div className="section-tag mb-4">
             <Trophy className="w-3.5 h-3.5" />
             Placement Record
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
             Our Students Get{" "}
             <span className="gradient-text">Hired Everywhere</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto">
             From startups to MNCs — Thiravugal graduates are making their mark
             across the tech industry.
           </p>
         </div>
 
         {/* Stats banner */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
           {[
             { label: "Placement Rate", value: "92%", icon: "🎯", color: "#29abe2" },
             { label: "Highest Package", value: "₹24 LPA", icon: "🚀", color: "#f5a623" },
@@ -101,11 +101,11 @@ export default function Placements() {
           ].map((s) => (
             <div
               key={s.label}
-              className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100"
+              className="bg-gray-50 rounded-2xl p-4 sm:p-6 text-center border border-gray-100"
             >
-              <div className="text-3xl mb-2">{s.icon}</div>
+              <div className="text-2xl sm:text-3xl mb-2">{s.icon}</div>
               <div
-                className="text-2xl font-display font-bold mb-1"
+                className="text-xl sm:text-2xl font-display font-bold mb-1"
                 style={{ color: s.color }}
               >
                 {s.value}
@@ -116,13 +116,13 @@ export default function Placements() {
         </div>
 
         {/* Hiring companies marquee */}
-        <div className="mb-14">
-          <p className="text-center text-gray-500 text-sm font-semibold tracking-wider uppercase mb-6">
+        <div className="mb-10 sm:mb-14">
+          <p className="text-center text-gray-500 text-sm font-semibold tracking-wider uppercase mb-4 sm:mb-6">
             Our Hiring Partners
           </p>
-          <div className="overflow-hidden relative">
-            <div className="flex gap-6 animate-none">
-              <div className="flex gap-6 shrink-0">
+          <div className="overflow-x-auto pb-2">
+            <div className="flex gap-3 sm:gap-6 w-max mx-auto">
+              <div className="flex gap-3 sm:gap-6 shrink-0">
                 {companies.map((company) => (
                   <div
                     key={company}
@@ -137,7 +137,7 @@ export default function Placements() {
         </div>
 
         {/* Placement cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {placements.map((p) => (
             <div
               key={p.name}

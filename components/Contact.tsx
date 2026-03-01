@@ -28,18 +28,18 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left info */}
           <div>
             <div className="section-tag mb-4">
               <Mail className="w-3.5 h-3.5" />
               Get in Touch
             </div>
-            <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-4">
               Book Your{" "}
               <span className="gradient-text">Free Counselling</span> Session
             </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
               Not sure where to start? Our career counsellors will guide you to
               the right program based on your background, goals, and timeline —
               completely free.
@@ -105,7 +105,7 @@ export default function Contact() {
           </div>
 
           {/* Right form */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+          <div className="bg-white rounded-3xl p-5 sm:p-8 shadow-lg border border-gray-100">
             {submitted ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">

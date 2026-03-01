@@ -88,11 +88,11 @@ export default function WhyThiravugal() {
             <Shield className="w-3.5 h-3.5" />
             Why Choose Us
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
             Everything You Need to{" "}
             <span className="gradient-text">Succeed</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
             Thiravugal is not just a training platform — it&apos;s a complete career
             transformation ecosystem built around hands-on, industry-standard learning.
           </p>
@@ -116,7 +116,7 @@ export default function WhyThiravugal() {
         </div>
 
         {/* Features grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
@@ -141,13 +141,13 @@ export default function WhyThiravugal() {
         </div>
 
         {/* Highlight banner */}
-        <div className="mt-16 animated-gradient rounded-3xl p-10 text-center relative overflow-hidden">
+        <div className="mt-10 sm:mt-16 animated-gradient rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
           <div className="absolute inset-0 pattern-overlay" />
           <div className="relative">
-            <h3 className="text-3xl font-display font-bold text-white mb-4">
+            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
               Ready to Unlock Your Potential?
             </h3>
-            <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+            <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-xl mx-auto">
               Join 10,000+ students and professionals who have transformed their
               careers with Thiravugal.
             </p>

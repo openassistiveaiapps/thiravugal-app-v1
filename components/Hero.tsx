@@ -105,22 +105,22 @@ export default function Hero() {
       {/* Pattern overlay */}
       <div className="absolute inset-0 pattern-overlay" />
 
-      {/* Decorative circles */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#29abe2]/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-[#f5a623]/10 rounded-full blur-3xl" />
+      {/* Decorative circles — hidden on mobile to avoid overflow */}
+      <div className="hidden sm:block absolute top-1/4 right-10 w-64 lg:w-96 h-64 lg:h-96 bg-[#29abe2]/10 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute bottom-1/4 left-10 w-48 lg:w-64 h-48 lg:h-64 bg-[#f5a623]/10 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left content */}
           <div className="text-center lg:text-left">
             {/* Tag */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6 text-white text-sm font-semibold backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-[#f5a623]" />
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-5 sm:mb-6 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f5a623] shrink-0" />
               India&apos;s Premier AI, ML & DSA Training Platform
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-4 sm:mb-6">
               Master{" "}
               <span className="gradient-text-gold">AI, ML</span>
               <br />
@@ -129,14 +129,14 @@ export default function Hero() {
               Just Coding
             </h1>
 
-            <p className="text-lg text-white/80 max-w-xl mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 leading-relaxed mx-auto lg:mx-0 max-w-lg">
               We go beyond syntax. Learn to think like an engineer — master AI,
               DSA, system design, and human-centered problem solving with
               mentorship from active software industry experts.
             </p>
 
             {/* Highlights */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+            <div className="flex flex-col xs:flex-row flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
               {highlights.map((item) => (
                 <div
                   key={item}
@@ -149,46 +149,44 @@ export default function Hero() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#programs" className="btn-gold">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <a href="#programs" className="btn-gold w-full sm:w-auto justify-center">
                 Explore Programs
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a href="#demo" className="btn-outline">
-                <Play className="w-5 h-5 fill-current" />
-                Watch Demo
+              <a href="#contact" className="btn-outline w-full sm:w-auto justify-center">
+                <Play className="w-4 h-4 fill-current" />
+                Book Free Session
               </a>
             </div>
 
             {/* Social proof */}
-            <div className="mt-10 flex items-center gap-6 justify-center lg:justify-start">
-              <div className="flex -space-x-3">
-                {["A", "B", "C", "D"].map((l, i) => (
-                  <div
-                    key={i}
-                    className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
-                    style={{
-                      background: `hsl(${i * 60 + 200}, 70%, 50%)`,
-                    }}
-                  >
-                    {l}
-                  </div>
-                ))}
+            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-6 justify-center lg:justify-start">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-3">
+                  {["A", "B", "C", "D"].map((l, i) => (
+                    <div
+                      key={i}
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
+                      style={{ background: `hsl(${i * 60 + 200}, 70%, 50%)` }}
+                    >
+                      {l}
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="text-white font-bold text-sm sm:text-base">10,000+ Students</div>
+                  <div className="text-white/60 text-xs">already enrolled</div>
+                </div>
               </div>
-              <div>
-                <div className="text-white font-bold">10,000+ Students</div>
-                <div className="text-white/60 text-sm">already enrolled</div>
-              </div>
-              <div className="h-10 w-px bg-white/20" />
+              <div className="hidden sm:block h-8 w-px bg-white/20" />
               <div>
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <span key={s} className="text-[#f5a623] text-lg">
-                      ★
-                    </span>
+                    <span key={s} className="text-[#f5a623] text-base sm:text-lg">★</span>
                   ))}
                 </div>
-                <div className="text-white/60 text-sm">4.9/5 rating</div>
+                <div className="text-white/60 text-xs sm:text-sm">4.9/5 rating</div>
               </div>
             </div>
           </div>

@@ -78,7 +78,7 @@ function CountUp({
   }, [target]);
 
   return (
-    <div ref={ref} className="text-4xl font-display font-bold" style={{ color }}>
+    <div ref={ref} className="text-3xl sm:text-4xl font-display font-bold" style={{ color }}>
       {count.toLocaleString()}
       {suffix}
     </div>
@@ -90,17 +90,14 @@ export default function Stats() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Trusted by banner */}
-        <div className="text-center mb-16">
-          <p className="text-gray-500 text-sm font-semibold tracking-widest uppercase mb-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="text-gray-500 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 sm:mb-6">
             Trusted by students from top colleges &amp; companies
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 opacity-50">
             {["TCS", "Infosys", "Wipro", "Cognizant", "HCL", "Zoho", "Freshworks", "Hexaware"].map(
               (company) => (
-                <div
-                  key={company}
-                  className="text-lg font-bold text-gray-600 font-display"
-                >
+                <div key={company} className="text-sm sm:text-base md:text-lg font-bold text-gray-600 font-display">
                   {company}
                 </div>
               )
@@ -109,22 +106,22 @@ export default function Stats() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <div
                 key={stat.label}
-                className={`${stat.bg} rounded-3xl p-8 text-center card-hover border border-transparent hover:border-gray-100`}
+                className={`${stat.bg} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-center card-hover border border-transparent hover:border-gray-100`}
               >
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4"
                   style={{ background: `${stat.color}20` }}
                 >
-                  <Icon className="w-7 h-7" style={{ color: stat.color }} />
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" style={{ color: stat.color }} />
                 </div>
                 <CountUp target={stat.value} suffix={stat.suffix} color={stat.color} />
-                <p className="text-gray-600 font-medium mt-2 text-sm">{stat.label}</p>
+                <p className="text-gray-600 font-medium mt-1 sm:mt-2 text-xs sm:text-sm">{stat.label}</p>
               </div>
             );
           })}

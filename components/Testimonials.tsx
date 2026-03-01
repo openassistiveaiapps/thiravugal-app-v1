@@ -76,16 +76,16 @@ export default function Testimonials() {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <div className="section-tag mb-4">
             <Quote className="w-3.5 h-3.5" />
             Success Stories
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
             Real People,{" "}
             <span className="gradient-text">Real Transformations</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto">
             Thousands of students have unlocked their potential with Thiravugal.
             Here are some of their stories.
           </p>
@@ -93,7 +93,7 @@ export default function Testimonials() {
 
         {/* Featured testimonial */}
         <div className="relative max-w-4xl mx-auto mb-12">
-          <div className="bg-gradient-to-br from-[#1a237e]/5 to-[#29abe2]/5 rounded-3xl p-10 border border-[#29abe2]/20 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#1a237e]/5 to-[#29abe2]/5 rounded-3xl p-5 sm:p-8 lg:p-10 border border-[#29abe2]/20 relative overflow-hidden">
             <Quote className="absolute top-6 right-8 w-20 h-20 text-[#29abe2]/10" />
 
             <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -111,7 +111,7 @@ export default function Testimonials() {
                     <Star key={i} className="w-5 h-5 text-[#f5a623] fill-[#f5a623]" />
                   ))}
                 </div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6 italic">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 italic">
                   &ldquo;{testimonials[current].review}&rdquo;
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
@@ -171,7 +171,7 @@ export default function Testimonials() {
         </div>
 
         {/* Mini testimonials grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
           {testimonials.map((t, i) => (
             <button
               key={t.name}

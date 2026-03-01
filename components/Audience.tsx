@@ -32,44 +32,44 @@ export default function Audience() {
     <section id="students" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <div className="section-tag mb-4">
             <Target className="w-3.5 h-3.5" />
             Who We Serve
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-3 sm:mb-4">
             Built for <span className="gradient-text">Every Stage</span> of Your Journey
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto">
             Whether you&apos;re starting your career or leveling up as a professional,
             we have a path crafted for you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-5 sm:gap-8">
           {/* Engineering Students Card */}
           <div
             id="students"
-            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a237e] to-[#29abe2] p-8 lg:p-10 card-hover"
+            className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a237e] to-[#29abe2] p-5 sm:p-8 lg:p-10 card-hover"
           >
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-16 translate-x-16" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-10 -translate-x-10" />
 
             <div className="relative">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center">
-                  <GraduationCap className="w-8 h-8 text-white" />
+              <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/15 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                  <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-display font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-white">
                     Engineering Students
                   </h3>
-                  <p className="text-white/70">Fresh graduates & final year students</p>
+                  <p className="text-white/70 text-sm sm:text-base">Fresh graduates & final year students</p>
                 </div>
               </div>
 
-              <p className="text-white/85 mb-8 leading-relaxed">
+              <p className="text-white/85 mb-5 sm:mb-8 leading-relaxed text-sm sm:text-base">
                 Bridge the gap between college curriculum and industry expectations.
                 Get the skills, projects, and placement support to land your dream IT job.
               </p>
@@ -84,7 +84,7 @@ export default function Audience() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8 bg-white/10 rounded-2xl p-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-5 sm:mb-8 bg-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4">
                 {[
                   { value: "92%", label: "Placement Rate" },
                   { value: "₹6L+", label: "Avg Package" },
@@ -112,26 +112,26 @@ export default function Audience() {
           {/* Working Professionals Card */}
           <div
             id="professionals"
-            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 p-8 lg:p-10 card-hover"
+            className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 p-5 sm:p-8 lg:p-10 card-hover"
           >
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#f5a623]/5 rounded-full -translate-y-16 translate-x-16" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#29abe2]/5 rounded-full translate-y-10 -translate-x-10" />
 
             <div className="relative">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-[#f5a623]/20 rounded-2xl flex items-center justify-center">
-                  <Briefcase className="w-8 h-8 text-[#f5a623]" />
+              <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#f5a623]/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                  <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-[#f5a623]" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-display font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-white">
                     Working Professionals
                   </h3>
-                  <p className="text-white/60">Upskill & switch to high-paying roles</p>
+                  <p className="text-white/60 text-sm sm:text-base">Upskill & switch to high-paying roles</p>
                 </div>
               </div>
 
-              <p className="text-white/80 mb-8 leading-relaxed">
+              <p className="text-white/80 mb-5 sm:mb-8 leading-relaxed text-sm sm:text-base">
                 Stay ahead in the rapidly evolving tech landscape. Master AI, Cloud,
                 and modern dev practices without quitting your job — learn at your pace.
               </p>
@@ -146,7 +146,7 @@ export default function Audience() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8 bg-white/5 rounded-2xl p-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-5 sm:mb-8 bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-4">
                 {[
                   { value: "3x", label: "Salary Growth" },
                   { value: "50+", label: "Expert Mentors" },

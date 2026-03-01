@@ -39,10 +39,10 @@ export default function Footer() {
   return (
     <footer className="bg-gray-950 text-white">
       {/* Top CTA strip */}
-      <div className="animated-gradient py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div className="animated-gradient py-8 sm:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
           <div>
-            <h3 className="text-2xl font-display font-bold text-white mb-1">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1">
               Ready to Unlock Your Potential?
             </h3>
             <p className="text-white/70">
@@ -58,7 +58,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
