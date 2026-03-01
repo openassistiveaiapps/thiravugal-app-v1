@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import AIQuotes from "@/components/AIQuotes";
+import AITraining from "@/components/AITraining";
 import BeyondCoding from "@/components/BeyondCoding";
 import RealWorldSystems from "@/components/RealWorldSystems";
 import Programs from "@/components/Programs";
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <AIQuotes />
+      <AITraining />
       <BeyondCoding />
       <RealWorldSystems />
       <Programs />
