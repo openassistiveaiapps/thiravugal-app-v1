@@ -136,7 +136,7 @@ export default function BeyondCoding() {
         {/* Interactive pillars */}
         <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
           {/* Pillar nav */}
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
+          <div className="grid grid-cols-1 gap-2 sm:gap-3">
             {pillars.map(p => {
               const PIcon = p.icon;
               return (
