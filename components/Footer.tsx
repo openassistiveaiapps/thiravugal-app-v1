@@ -46,7 +46,7 @@ export default function Footer() {
               Ready to Unlock Your Potential?
             </h3>
             <p className="text-white/70">
-              Join 10,000+ students. Start with a free counselling session.
+              Start your journey with a free counselling session.
             </p>
           </div>
           <a href="#contact" className="btn-gold shrink-0">

@@ -1,12 +1,11 @@
 "use client";
 
-import { Award, Briefcase, Code2, Star } from "lucide-react";
+import { Award, Briefcase, Code2 } from "lucide-react";
 
 const smeStats = [
   { icon: Briefcase, value: "50+", label: "Industry SME Mentors", color: "#29abe2" },
   { icon: Award, value: "8+ yrs", label: "Avg. Industry Experience", color: "#f5a623" },
   { icon: Code2, value: "15+", label: "Real-World Projects Taught", color: "#22c55e" },
-  { icon: Star, value: "4.9/5", label: "Mentor Rating", color: "#a855f7" },
 ];
 
 export default function Mentors() {
@@ -58,7 +57,7 @@ export default function Mentors() {
         </div>
 
         {/* SME Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
           {smeStats.map((stat) => {
             const Icon = stat.icon;
             return (

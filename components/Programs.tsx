@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Clock,
   Users,
-  Star,
   Flame,
 } from "lucide-react";
 
@@ -236,10 +235,6 @@ export default function Programs() {
                     <span className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
                       {program.students}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-[#f5a623] fill-[#f5a623]" />
-                      {program.rating}
                     </span>
                   </div>
 

@@ -160,35 +160,6 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Social proof */}
-            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-6 justify-center lg:justify-start">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-3">
-                  {["A", "B", "C", "D"].map((l, i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
-                      style={{ background: `hsl(${i * 60 + 200}, 70%, 50%)` }}
-                    >
-                      {l}
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="text-white font-bold text-sm sm:text-base">10,000+ Students</div>
-                  <div className="text-white/60 text-xs">already enrolled</div>
-                </div>
-              </div>
-              <div className="hidden sm:block h-8 w-px bg-white/20" />
-              <div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <span key={s} className="text-[#f5a623] text-base sm:text-lg">★</span>
-                  ))}
-                </div>
-                <div className="text-white/60 text-xs sm:text-sm">4.9/5 rating</div>
-              </div>
-            </div>
           </div>
 
           {/* Right – Visual */}

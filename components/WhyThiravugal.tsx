@@ -56,7 +56,7 @@ const features = [
     icon: HeartHandshake,
     title: "Lifetime Community",
     description:
-      "Join a 10,000+ strong alumni network. Access our Discord, mentorship, and job referrals forever.",
+      "Join a growing alumni network. Access our Discord, mentorship, and job referrals forever.",
     color: "#f97316",
     bg: "bg-orange-50",
   },
@@ -148,7 +148,7 @@ export default function WhyThiravugal() {
               Ready to Unlock Your Potential?
             </h3>
             <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-xl mx-auto">
-              Join 10,000+ students and professionals who have transformed their
+              Join students and professionals who are transforming their
               careers with Thiravugal.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
