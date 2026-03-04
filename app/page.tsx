@@ -9,7 +9,7 @@ import Programs from "@/components/Programs";
 import Audience from "@/components/Audience";
 import Mentors from "@/components/Mentors";
 import WhyThiravugal from "@/components/WhyThiravugal";
-import Testimonials from "@/components/Testimonials";
+import TeachingApproach from "@/components/TeachingApproach";
 import Placements from "@/components/Placements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -28,7 +28,7 @@ export default function Home() {
       <Audience />
       <Mentors />
       <WhyThiravugal />
-      <Testimonials />
+      <TeachingApproach />
       <Placements />
       <Contact />
       <Footer />

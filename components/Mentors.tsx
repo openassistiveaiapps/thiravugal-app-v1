@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Briefcase, Users2, Star } from "lucide-react";
+import { Award, Briefcase, Code2, Star } from "lucide-react";
 
 const mentors = [
   {
@@ -10,7 +10,7 @@ const mentors = [
     company: "Ex-Google | 12 yrs exp",
     expertise: ["System Design", "Full Stack", "DSA"],
     color: "#29abe2",
-    sessions: "200+ sessions",
+    focus: "Teaches architecture-first thinking",
   },
   {
     initials: "SM",
@@ -19,7 +19,7 @@ const mentors = [
     company: "Ex-Microsoft | 9 yrs exp",
     expertise: ["AI/ML", "Deep Learning", "LLMs"],
     color: "#a855f7",
-    sessions: "150+ sessions",
+    focus: "Teaches production AI systems",
   },
   {
     initials: "AP",
@@ -28,7 +28,7 @@ const mentors = [
     company: "Ex-Amazon | 10 yrs exp",
     expertise: ["Cloud", "DevOps", "Kubernetes"],
     color: "#f5a623",
-    sessions: "180+ sessions",
+    focus: "Teaches cloud-native design",
   },
   {
     initials: "DV",
@@ -37,14 +37,14 @@ const mentors = [
     company: "Ex-Zoho | 8 yrs exp",
     expertise: ["Node.js", "Microservices", "DB Design"],
     color: "#22c55e",
-    sessions: "120+ sessions",
+    focus: "Teaches scalable backend systems",
   },
 ];
 
 const smeStats = [
   { icon: Briefcase, value: "50+", label: "Industry SME Mentors", color: "#29abe2" },
   { icon: Award, value: "8+ yrs", label: "Avg. Industry Experience", color: "#f5a623" },
-  { icon: Users2, value: "500+", label: "1-on-1 Sessions / Month", color: "#22c55e" },
+  { icon: Code2, value: "15+", label: "Real-World Projects Taught", color: "#22c55e" },
   { icon: Star, value: "4.9/5", label: "Mentor Rating", color: "#a855f7" },
 ];
 
@@ -165,7 +165,12 @@ export default function Mentors() {
                 ))}
               </div>
 
-              <div className="text-gray-400 text-xs font-medium">{mentor.sessions}</div>
+              <div
+                className="text-xs font-medium italic px-3 py-1.5 rounded-lg"
+                style={{ background: `${mentor.color}10`, color: mentor.color }}
+              >
+                {mentor.focus}
+              </div>
             </div>
           ))}
         </div>
