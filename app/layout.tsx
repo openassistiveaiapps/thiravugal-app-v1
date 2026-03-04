@@ -15,24 +15,87 @@ const poppins = Poppins({
   display: "swap",
 });
 
+// Update BASE_URL once your domain is registered
+const BASE_URL = "https://www.thiravugal.in";
+
 export const metadata: Metadata = {
-  title: "Thiravugal – Unlock Your Potential",
+  metadataBase: new URL(BASE_URL),
+
+  title: {
+    default: "Thiravugal | AI & ML, DSA & System Design Training | Chennai",
+    template: "%s | Thiravugal",
+  },
   description:
-    "India's premier IT training and placement platform. Master IT skills, DSA, and AI with industry experts. Empowering engineering students and professionals to become industry-ready.",
+    "Thiravugal is an IT training platform in Chennai teaching AI/ML, DSA & System Design, Full Stack, and Cloud — by industry SMEs. Learn to architect solutions, build real-world systems, and become AI-ready.",
+
   keywords: [
-    "IT training",
-    "placement",
-    "DSA",
-    "AI training",
-    "engineering students",
-    "working professionals",
+    "AI ML training Chennai",
+    "DSA training Chennai",
+    "system design course India",
+    "IT training Chennai",
+    "software engineering course",
+    "LLM AI agents training",
+    "RAG MCP course",
+    "full stack development course",
+    "DevOps cloud training",
+    "engineering student training",
+    "working professional IT course",
+    "placement training Chennai",
     "Thiravugal",
+    "industry SME training",
+    "AI native engineering",
   ],
+
+  authors: [{ name: "Thiravugal", url: BASE_URL }],
+  creator: "Thiravugal",
+  publisher: "Thiravugal",
+
+  alternates: {
+    canonical: BASE_URL,
+  },
+
   openGraph: {
-    title: "Thiravugal – Unlock Your Potential",
-    description:
-      "Master IT, DSA & AI skills with industry experts. Get placed in top companies.",
     type: "website",
+    url: BASE_URL,
+    siteName: "Thiravugal",
+    title: "Thiravugal | AI & ML, DSA & System Design Training | Chennai",
+    description:
+      "Learn AI/ML, DSA, Full Stack & System Design from industry SMEs. Build real-world systems like CRM, ERP, and AI Agents. Get industry-ready with Thiravugal.",
+    locale: "en_IN",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 800,
+        height: 600,
+        alt: "Thiravugal – Unlock Your Potential",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Thiravugal | AI & ML, DSA & System Design Training",
+    description:
+      "Learn AI/ML, DSA, Full Stack & System Design from industry SMEs in Chennai. Build real-world systems and become AI-ready.",
+    images: ["/logo.jpeg"],
+    creator: "@thiravugal",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+
+  verification: {
+    // Add your Google Search Console verification code here once registered:
+    // google: "your-verification-code",
   },
 };
 
