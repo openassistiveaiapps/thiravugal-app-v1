@@ -2,45 +2,6 @@
 
 import { Award, Briefcase, Code2, Star } from "lucide-react";
 
-const mentors = [
-  {
-    initials: "RK",
-    name: "Rajesh Kumar",
-    title: "Senior Software Architect",
-    company: "Ex-Google | 12 yrs exp",
-    expertise: ["System Design", "Full Stack", "DSA"],
-    color: "#29abe2",
-    focus: "Teaches architecture-first thinking",
-  },
-  {
-    initials: "SM",
-    name: "Sowmya Murugan",
-    title: "AI/ML Engineer",
-    company: "Ex-Microsoft | 9 yrs exp",
-    expertise: ["AI/ML", "Deep Learning", "LLMs"],
-    color: "#a855f7",
-    focus: "Teaches production AI systems",
-  },
-  {
-    initials: "AP",
-    name: "Arjun Prasad",
-    title: "DevOps Lead",
-    company: "Ex-Amazon | 10 yrs exp",
-    expertise: ["Cloud", "DevOps", "Kubernetes"],
-    color: "#f5a623",
-    focus: "Teaches cloud-native design",
-  },
-  {
-    initials: "DV",
-    name: "Divya Venkat",
-    title: "Backend Engineer",
-    company: "Ex-Zoho | 8 yrs exp",
-    expertise: ["Node.js", "Microservices", "DB Design"],
-    color: "#22c55e",
-    focus: "Teaches scalable backend systems",
-  },
-];
-
 const smeStats = [
   { icon: Briefcase, value: "50+", label: "Industry SME Mentors", color: "#29abe2" },
   { icon: Award, value: "8+ yrs", label: "Avg. Industry Experience", color: "#f5a623" },
@@ -97,7 +58,7 @@ export default function Mentors() {
         </div>
 
         {/* SME Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {smeStats.map((stat) => {
             const Icon = stat.icon;
             return (
@@ -123,61 +84,6 @@ export default function Mentors() {
           })}
         </div>
 
-        {/* Mentor cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {mentors.map((mentor) => (
-            <div
-              key={mentor.name}
-              className="bg-white rounded-3xl p-6 border border-gray-100 card-hover group text-center"
-            >
-              {/* Avatar */}
-              <div
-                className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 group-hover:scale-110 transition-transform"
-                style={{ background: `linear-gradient(135deg, ${mentor.color}, ${mentor.color}99)` }}
-              >
-                {mentor.initials}
-              </div>
-
-              <h3 className="font-display font-bold text-gray-900 text-lg mb-0.5">
-                {mentor.name}
-              </h3>
-              <p className="text-gray-600 text-sm mb-1">{mentor.title}</p>
-              <p
-                className="text-xs font-semibold mb-4"
-                style={{ color: mentor.color }}
-              >
-                {mentor.company}
-              </p>
-
-              {/* Expertise tags */}
-              <div className="flex flex-wrap justify-center gap-1.5 mb-4">
-                {mentor.expertise.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                    style={{
-                      background: `${mentor.color}15`,
-                      color: mentor.color,
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div
-                className="text-xs font-medium italic px-3 py-1.5 rounded-lg"
-                style={{ background: `${mentor.color}10`, color: mentor.color }}
-              >
-                {mentor.focus}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-center text-gray-500 mt-6 text-sm">
-          + 46 more industry experts across all domains
-        </p>
       </div>
     </section>
   );
