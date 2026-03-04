@@ -9,7 +9,6 @@ import Audience from "@/components/Audience";
 import Mentors from "@/components/Mentors";
 import WhyThiravugal from "@/components/WhyThiravugal";
 import TeachingApproach from "@/components/TeachingApproach";
-import Placements from "@/components/Placements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -27,7 +26,6 @@ export default function Home() {
       <Mentors />
       <WhyThiravugal />
       <TeachingApproach />
-      <Placements />
       <Contact />
       <Footer />
     </main>
