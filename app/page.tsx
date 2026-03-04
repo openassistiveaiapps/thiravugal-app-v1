@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
 import AIQuotes from "@/components/AIQuotes";
 import AITraining from "@/components/AITraining";
 import BeyondCoding from "@/components/BeyondCoding";
@@ -19,7 +18,6 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Stats />
       <AIQuotes />
       <AITraining />
       <BeyondCoding />
