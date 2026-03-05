@@ -1,10 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
+import { Turnstile } from "@marsidev/react-turnstile";
+
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY!;
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!;
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -14,9 +21,33 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Counselling Request — ${form.program || "General"} | Thiravugal`,
+          from_name: "Thiravugal Website",
+          "cf-turnstile-response": turnstileToken,
+          ...form,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again or WhatsApp us directly.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -121,6 +152,8 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot — bots fill this, humans don't */}
+                <input type="checkbox" name="botcheck" className="hidden" aria-hidden="true" />
                 <h3 className="text-2xl font-display font-bold text-gray-900 mb-6">
                   Start Your Journey Today
                 </h3>
@@ -224,12 +257,28 @@ export default function Contact() {
                   />
                 </div>
 
+                <Turnstile
+                  siteKey={TURNSTILE_SITE_KEY}
+                  onSuccess={setTurnstileToken}
+                  onError={() => setError("Bot check failed. Please refresh and try again.")}
+                  options={{ theme: "light", size: "flexible" }}
+                />
+
+                {error && (
+                  <p className="text-red-500 text-sm text-center">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full btn-primary justify-center py-4 text-base"
+                  disabled={loading || !turnstileToken}
+                  className="w-full btn-primary justify-center py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-5 h-5" />
-                  Book My Free Session
+                  {loading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <Send className="w-5 h-5" />
+                  )}
+                  {loading ? "Sending..." : "Book My Free Session"}
                 </button>
 
                 <p className="text-center text-gray-400 text-xs">
