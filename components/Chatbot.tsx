@@ -83,7 +83,7 @@ const QA: { keywords: string[]; text: string; link?: { label: string; href: stri
   },
   {
     keywords: ["contact", "reach", "call", "whatsapp", "email", "talk", "speak"],
-    text: "You can reach us at:\n📞 +91 99418 74780\n📧 hello@thiravugal.com\n📍 Chennai, Tamil Nadu\n\nOr fill out our contact form for a free counselling session!",
+    text: "You can reach us at:\n📞 +91 99418 74780\n📧 support@thiravugal.in\n📍 Chennai, Tamil Nadu\n\nOr fill out our contact form for a free counselling session!",
     link: { label: "Open Contact Form →", href: "#contact" },
   },
 ];

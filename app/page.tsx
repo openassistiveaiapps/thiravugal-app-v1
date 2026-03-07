@@ -31,7 +31,7 @@ const jsonLd = {
     "@type": "ContactPoint",
     telephone: "+91-99418-74780",
     contactType: "admissions",
-    email: "hello@thiravugal.com",
+    email: "support@thiravugal.in",
     areaServed: "IN",
     availableLanguage: ["English", "Tamil"],
   },

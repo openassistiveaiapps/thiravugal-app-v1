@@ -142,7 +142,7 @@ export default function Footer() {
             <div className="space-y-4">
               {[
                 { icon: Phone, text: "+91 99418 74780", sub: "WhatsApp & Call" },
-                { icon: Mail, text: "hello@thiravugal.com", sub: "Support email" },
+                { icon: Mail, text: "support@thiravugal.in", sub: "Support email" },
                 { icon: MapPin, text: "Chennai, Tamil Nadu", sub: "Head Office" },
               ].map((item) => {
                 const Icon = item.icon;

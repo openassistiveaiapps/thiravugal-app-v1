@@ -87,7 +87,7 @@ export default function Contact() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "hello@thiravugal.com",
+                  value: "support@thiravugal.in",
                   color: "#29abe2",
                 },
                 {
