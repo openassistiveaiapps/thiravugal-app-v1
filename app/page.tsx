@@ -29,7 +29,7 @@ const jsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+91-99622-50888",
+    telephone: "+91-99418-74780",
     contactType: "admissions",
     email: "hello@thiravugal.com",
     areaServed: "IN",

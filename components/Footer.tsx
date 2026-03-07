@@ -141,7 +141,7 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-white mb-4">Contact</h4>
             <div className="space-y-4">
               {[
-                { icon: Phone, text: "+91 99622 50888", sub: "WhatsApp & Call" },
+                { icon: Phone, text: "+91 99418 74780", sub: "WhatsApp & Call" },
                 { icon: Mail, text: "hello@thiravugal.com", sub: "Support email" },
                 { icon: MapPin, text: "Chennai, Tamil Nadu", sub: "Head Office" },
               ].map((item) => {

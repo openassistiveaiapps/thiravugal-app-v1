@@ -81,7 +81,7 @@ export default function Contact() {
                 {
                   icon: Phone,
                   label: "Call / WhatsApp",
-                  value: "+91 99622 50888",
+                  value: "+91 99418 74780",
                   color: "#22c55e",
                 },
                 {
