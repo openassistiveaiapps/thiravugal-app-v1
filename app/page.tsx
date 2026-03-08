@@ -76,9 +76,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main>
+      <div className="fixed top-0 left-0 right-0 z-50">
         <WomensDayBanner />
         <Navbar />
+      </div>
+      <main>
         <Hero />
         <AIQuotes />
         <AITraining />
