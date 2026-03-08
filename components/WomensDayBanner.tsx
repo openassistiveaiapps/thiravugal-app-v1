@@ -6,7 +6,11 @@ import { X } from "lucide-react";
 export default function WomensDayBanner() {
   const [visible, setVisible] = useState(true);
 
-  if (!visible) return null;
+  // Only show on March 8th (month is 0-indexed: 2 = March)
+  const today = new Date();
+  const isWomensDay = today.getMonth() === 2 && today.getDate() === 8;
+
+  if (!visible || !isWomensDay) return null;
 
   return (
     <div
