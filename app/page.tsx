@@ -1,3 +1,4 @@
+import WomensDayBanner from "@/components/WomensDayBanner";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AIQuotes from "@/components/AIQuotes";
@@ -76,6 +77,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main>
+        <WomensDayBanner />
         <Navbar />
         <Hero />
         <AIQuotes />
