@@ -35,26 +35,28 @@ const socials = [
   { icon: Twitter, href: "#", color: "#1DA1F2" },
 ];
 
-export default function Footer() {
+export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
   return (
     <footer className="bg-gray-950 text-white">
       {/* Top CTA strip */}
-      <div className="animated-gradient py-8 sm:py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
-          <div>
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1">
-              Ready to Unlock Your Potential?
-            </h3>
-            <p className="text-white/70">
-              Start your journey with a free counselling session.
-            </p>
+      {!hideCta && (
+        <div className="animated-gradient py-8 sm:py-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1">
+                Ready to Unlock Your Potential?
+              </h3>
+              <p className="text-white/70">
+                Start your journey with a free counselling session.
+              </p>
+            </div>
+            <a href="#contact" className="btn-gold shrink-0">
+              Book Free Session
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
-          <a href="#contact" className="btn-gold shrink-0">
-            Book Free Session
-            <ArrowRight className="w-5 h-5" />
-          </a>
         </div>
-      </div>
+      )}
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

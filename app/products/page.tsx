@@ -552,7 +552,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
