@@ -219,6 +219,9 @@ export default function Contact() {
                       <option>Fresh Graduate</option>
                       <option>Working Professional</option>
                       <option>Career Switcher</option>
+                      <option>Business Person</option>
+                      <option>Client</option>
+                      <option>Company</option>
                     </select>
                   </div>
                   <div>
