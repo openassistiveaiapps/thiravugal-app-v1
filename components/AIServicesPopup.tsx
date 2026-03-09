@@ -28,15 +28,11 @@ export default function AIServicesPopup() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("ai_popup_dismissed")) return;
     const timer = setTimeout(() => setVisible(true), 4000);
     return () => clearTimeout(timer);
   }, []);
 
-  const dismiss = () => {
-    setVisible(false);
-    sessionStorage.setItem("ai_popup_dismissed", "1");
-  };
+  const dismiss = () => setVisible(false);
 
   if (!visible) return null;
 
