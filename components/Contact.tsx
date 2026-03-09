@@ -33,7 +33,6 @@ export default function Contact() {
           access_key: WEB3FORMS_KEY,
           subject: `New Counselling Request — ${form.program || "General"} | Thiravugal`,
           from_name: "Thiravugal Website",
-          "cf-turnstile-response": turnstileToken,
           ...form,
         }),
       });
