@@ -13,6 +13,7 @@ import TeachingApproach from "@/components/TeachingApproach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import AIServicesPopup from "@/components/AIServicesPopup";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -94,6 +95,7 @@ export default function Home() {
         <Contact />
         <Footer />
         <Chatbot />
+        <AIServicesPopup />
       </main>
     </>
   );
