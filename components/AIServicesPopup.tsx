@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { X, Bot, MessageSquare, Globe, ArrowRight, Sparkles } from "lucide-react";
 
 const services = [
@@ -113,18 +114,25 @@ export default function AIServicesPopup() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#contact"
+            <Link
+              href="/products"
               onClick={dismiss}
               className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-sm text-white transition-all"
               style={{ background: "linear-gradient(90deg, #29abe2, #1a78a8)" }}
             >
-              Submit an Enquiry
+              View Products
               <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="#contact"
+              onClick={dismiss}
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-sm transition-all border border-white/15 hover:border-white/30 text-white/80 hover:text-white"
+            >
+              Contact Us
             </a>
             <button
               onClick={dismiss}
-              className="flex-1 py-3 px-5 rounded-xl font-semibold text-sm text-white/60 hover:text-white/90 transition border border-white/10 hover:border-white/20"
+              className="flex-1 py-3 px-5 rounded-xl font-semibold text-sm text-white/40 hover:text-white/70 transition"
             >
               Maybe Later
             </button>
