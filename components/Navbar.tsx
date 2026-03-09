@@ -19,7 +19,7 @@ const navLinks = [
   },
   { label: "For Students", href: "#students" },
   { label: "For Professionals", href: "#professionals" },
-  { label: "Placements", href: "#placements" },
+  { label: "AI Solutions", href: "/products" },
   { label: "About", href: "#about" },
 ];
 
