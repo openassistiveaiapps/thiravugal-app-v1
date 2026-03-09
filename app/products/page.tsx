@@ -238,7 +238,7 @@ export default function ProductsPage() {
               <Link href="/#contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm"
                 style={{ border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.85)" }}>
-                Let's Build Together
+                Contact Us →
               </Link>
             </div>
           </div>
@@ -539,7 +539,7 @@ export default function ProductsPage() {
                 <Link href="/#contact"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm text-white hover:opacity-90 transition-all"
                   style={{ background: "linear-gradient(90deg, #29abe2, #1a78a8)" }}>
-                  Submit an Enquiry <ArrowRight className="w-4 h-4" />
+                  Contact Us <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-all"
