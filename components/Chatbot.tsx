@@ -16,11 +16,11 @@ const SENSITIVE_RESPONSE =
 const QA: { keywords: string[]; text: string; link?: { label: string; href: string } }[] = [
   {
     keywords: ["hi", "hello", "hey", "helo", "hai", "start", "help"],
-    text: "Hi there! 👋 I'm Thiravugal's assistant. I can tell you about our programs, what we teach, and how to get started. What would you like to know?",
+    text: "Hi there! 👋 I'm Thiravugal's assistant. I can help you with:\n\n📚 IT Training Programs (AI/ML, DSA, Full Stack, Cloud)\n🤖 AI Solutions we build for businesses\n\nWhat would you like to know?",
   },
   {
     keywords: ["what is thiravugal", "about thiravugal", "about you", "who are you", "tell me about"],
-    text: "Thiravugal is an IT training platform focused on making engineers truly industry-ready. We teach AI/ML, DSA, Full Stack, Cloud & DevOps — with a strong emphasis on system design, architecture, and AI-native thinking. Not just code, but how to think like a senior engineer.",
+    text: "Thiravugal is an AI-first tech company with two arms:\n\n📚 IT Training — We upskill engineers in AI/ML, DSA, Full Stack, and Cloud with industry SME mentors.\n\n🏗️ AI Products — We design and build AI-powered software for businesses — chatbots, agents, automation, and full web products.\n\nOne mission: making businesses and careers smarter with AI.",
   },
   {
     keywords: ["courses", "programs", "offer", "what do you teach", "what you teach", "training"],
@@ -83,15 +83,71 @@ const QA: { keywords: string[]; text: string; link?: { label: string; href: stri
   },
   {
     keywords: ["contact", "reach", "call", "whatsapp", "email", "talk", "speak"],
-    text: "You can reach us at:\n📞 +91 99418 74780\n📧 support@thiravugal.in\n📍 Chennai, Tamil Nadu\n\nOr fill out our contact form for a free counselling session!",
+    text: "You can reach us at:\n📞 +91 99418 74780\n📧 support@thiravugal.in\n📍 Chennai, Tamil Nadu\n\nOr fill out our contact form — for training enquiries or business projects!",
     link: { label: "Open Contact Form →", href: "#contact" },
+  },
+
+  // ── AI Solutions / Products ──────────────────────────────────────────────
+  {
+    keywords: ["ai solution", "ai product", "products", "build for", "build ai", "you build", "services", "what do you build", "software", "develop"],
+    text: "Beyond training, Thiravugal builds AI-powered software for businesses:\n\n🤖 AI Agents — autonomous agents that reason & execute tasks\n💬 AI Chatbots — trained on your business data\n🎙️ Voice AI — voice bots for calls & support\n⚙️ AI Automation — workflows that run themselves\n🌐 Websites & Web Apps — modern, AI-integrated products\n\nWe make your business simple using AI.",
+    link: { label: "View Our Products →", href: "/products" },
+  },
+  {
+    keywords: ["chatbot", "chat bot", "customer support bot", "support bot", "whatsapp bot", "business chatbot"],
+    text: "We build intelligent AI Chatbots trained on your business data:\n\n✅ Available 24/7 — never miss a customer query\n✅ Trained on your docs, FAQs, and product info\n✅ Supports WhatsApp, website, and mobile\n✅ Reduces support cost by up to 60%\n\nFrom lead capture bots to full customer service agents — we handle it end to end.",
+    link: { label: "Enquire About Chatbots →", href: "/#contact" },
+  },
+  {
+    keywords: ["ai agent", "autonomous agent", "agentic", "agent", "automate task", "task automation"],
+    text: "Our AI Agents go beyond chatbots — they think, plan, and act:\n\n🧠 Reason through complex multi-step tasks\n🔗 Integrate with your CRM, email, calendar, and APIs\n📋 Execute workflows autonomously (no human in the loop)\n📊 Generate reports, analyse data, take actions\n\nBuilt using LangChain, CrewAI, and custom agent frameworks.",
+    link: { label: "Discuss Your Use Case →", href: "/#contact" },
+  },
+  {
+    keywords: ["voice ai", "voice bot", "voice agent", "ivr", "call bot", "phone bot", "speech"],
+    text: "Our Voice AI solutions handle real phone calls and conversations:\n\n📞 AI-powered inbound & outbound call agents\n🗣️ Natural language understanding in English & Tamil\n🏥 Used in healthcare, retail, and customer support\n⚡ Responds instantly — no hold time\n\nGreat for appointment booking, order status, and support calls.",
+    link: { label: "Talk to Us →", href: "/#contact" },
+  },
+  {
+    keywords: ["automation", "workflow", "automate", "rpa", "process", "document", "data extraction"],
+    text: "We build AI Automation that eliminates manual, repetitive work:\n\n📄 Document processing & data extraction (invoices, forms)\n📧 Automated email/report generation\n🔄 Multi-system workflow integration\n📊 AI-powered dashboards & forecasting\n\nWe analyse your business processes and design automation that saves real hours.",
+    link: { label: "Get Automation Consultation →", href: "/#contact" },
+  },
+  {
+    keywords: ["website", "web app", "web application", "landing page", "webapp", "app development", "mobile app"],
+    text: "We build modern, fast, AI-integrated web products:\n\n⚡ High-performance websites (like this one!)\n🛒 E-commerce & SaaS platforms\n📊 Business dashboards with AI insights\n🤖 AI-powered features embedded in your product\n\nBuilt with Next.js, React, and cloud-native architecture.",
+    link: { label: "Start Your Project →", href: "/#contact" },
+  },
+  {
+    keywords: ["industry", "who is it for", "business", "startup", "enterprise", "small business", "client"],
+    text: "We build AI solutions for businesses of all sizes:\n\n🏪 Small Businesses — chatbots, booking bots, websites\n🏢 Mid-sized Companies — automation, AI agents, dashboards\n🏭 Enterprises — custom AI systems, integrations, LLM solutions\n\nIndustries: Healthcare, Retail, Finance, Education, Logistics, and more.",
+    link: { label: "Talk to Our Team →", href: "/#contact" },
+  },
+  {
+    keywords: ["how long to build", "timeline", "delivery", "how much time", "project time"],
+    text: "Project timelines depend on scope:\n\n⚡ Simple chatbot or landing page — 1–2 weeks\n🤖 AI Agent or automation — 3–6 weeks\n🌐 Full web application — 6–12 weeks\n\nWe follow an agile process with regular demos so you see progress throughout.",
+    link: { label: "Get a Timeline Estimate →", href: "/#contact" },
+  },
+  {
+    keywords: ["cost", "price", "pricing", "how much does it cost", "budget", "quote", "estimate", "business enquiry"],
+    text: "Pricing depends on the scope and complexity of your project. We offer flexible models — fixed price, milestone-based, or retainer.\n\nDrop us a message and we'll share a custom estimate within 24 hours!",
+    link: { label: "Request a Quote →", href: "/#contact" },
+  },
+  {
+    keywords: ["technology", "tech stack", "built with", "which technology", "stack", "framework"],
+    text: "We use modern, production-grade technology:\n\n🧠 AI/LLM — OpenAI, Claude, Gemini, Llama\n🔗 Agents — LangChain, CrewAI, MCP\n🗄️ Vector DBs — Pinecone, ChromaDB, pgvector\n⚛️ Frontend — React, Next.js, Tailwind\n🖥️ Backend — Node.js, FastAPI, PostgreSQL\n☁️ Cloud — AWS, GCP, Vercel, Docker",
+  },
+  {
+    keywords: ["why thiravugal", "why choose", "why you", "what makes you different", "unique", "different"],
+    text: "What makes Thiravugal different:\n\n🧠 AI-First — We don't bolt on AI. We build around it.\n👨‍💻 Built by Engineers — Our team ships real production systems.\n🤝 End-to-End — From idea to deployment, we own it.\n🔁 Training + Build — We train your team AND build the product.\n📍 Chennai-based — Local team, global standards.",
+    link: { label: "See Our Work →", href: "/products" },
   },
 ];
 
 const QUICK_REPLIES = [
+  "What AI products do you build?",
+  "Tell me about AI Chatbots",
   "What courses do you offer?",
-  "Tell me about AI training",
-  "What is Beyond Coding?",
   "How do I enroll?",
 ];
 
@@ -116,7 +172,7 @@ export default function Chatbot() {
     {
       id: idCounter++,
       role: "bot",
-      text: "Hi! 👋 I'm the Thiravugal assistant. Ask me anything about our programs, what we teach, or how to get started!",
+      text: "Hi! 👋 I'm the Thiravugal assistant. Ask me about our AI solutions for businesses, IT training programs, or anything else. How can I help?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -147,7 +203,7 @@ export default function Chatbot() {
     }, 800);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     sendMessage(input);
   };
