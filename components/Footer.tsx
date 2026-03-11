@@ -183,7 +183,7 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-gray-500 text-sm">
-            © 2025 Thiravugal. All rights reserved.
+            © 2026 Thiravugal. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link href="/privacy-policy" className="hover:text-[#29abe2] transition-colors">

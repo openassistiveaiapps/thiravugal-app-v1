@@ -94,7 +94,7 @@ export default function PrivacyPolicy() {
           <p className="text-[#29abe2] text-sm font-semibold uppercase tracking-widest mb-3">Legal</p>
           <h1 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">Privacy Policy</h1>
           <p className="text-white/60 text-sm max-w-xl mx-auto">
-            Effective Date: March 2025 &nbsp;·&nbsp; Last Updated: March 2025
+            Effective Date: March 2026 &nbsp;·&nbsp; Last Updated: March 2026
           </p>
         </div>
 
