@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Mail,
   Phone,
@@ -20,12 +21,12 @@ const programs = [
 ];
 
 const company = [
-  { label: "About Us", href: "#about" },
-  { label: "Our Mentors", href: "#mentors" },
-  { label: "Placement Stories", href: "#placements" },
+  { label: "About Us", href: "/#about" },
+  { label: "Our Mentors", href: "/#mentors" },
+  { label: "Placement Stories", href: "/#placements" },
   { label: "Blog", href: "#" },
   { label: "Careers", href: "#" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const socials = [
@@ -50,10 +51,10 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
                 Start your journey with a free counselling session.
               </p>
             </div>
-            <a href="#contact" className="btn-gold shrink-0">
+            <Link href="/#contact" className="btn-gold shrink-0">
               Book Free Session
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       )}
@@ -110,12 +111,12 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
             <ul className="space-y-2.5">
               {programs.map((p) => (
                 <li key={p}>
-                  <a
-                    href="#programs"
+                  <Link
+                    href="/#programs"
                     className="text-gray-400 text-sm hover:text-[#29abe2] transition-colors"
                   >
                     {p}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -127,12 +128,12 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
             <ul className="space-y-2.5">
               {company.map((c) => (
                 <li key={c.label}>
-                  <a
+                  <Link
                     href={c.href}
                     className="text-gray-400 text-sm hover:text-[#29abe2] transition-colors"
                   >
                     {c.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
