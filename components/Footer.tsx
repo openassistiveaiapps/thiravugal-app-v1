@@ -186,15 +186,12 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
             © 2025 Thiravugal. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-[#29abe2] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#29abe2] transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-[#29abe2] transition-colors">
+            </Link>
+            <Link href="/terms" className="hover:text-[#29abe2] transition-colors">
               Terms of Service
-            </a>
-            <a href="#" className="hover:text-[#29abe2] transition-colors">
-              Refund Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
