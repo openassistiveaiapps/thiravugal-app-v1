@@ -20,6 +20,7 @@ const navLinks = [
   { label: "For Students", href: "#students" },
   { label: "For Professionals", href: "#professionals" },
   { label: "AI Solutions", href: "/products" },
+  { label: "AI Concepts", href: "/ai-concepts" },
   { label: "About", href: "#about" },
 ];
 
