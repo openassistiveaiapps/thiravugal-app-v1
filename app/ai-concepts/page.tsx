@@ -361,6 +361,145 @@ function AnimVoiceAI({ active }: { active: boolean }) {
 }
 
 /* ─────────────────────────────────────────────
+   JOURNEY PHASE ANIMATIONS
+───────────────────────────────────────────── */
+function PhaseAnimDiscover({ active }: { active: boolean }) {
+  const totalWaste = useCounter(10, active, 1800);
+  const workflows = [
+    { name: "Manual ticket handling",   cost: "₹2.4L/mo", color: "#f87171" },
+    { name: "Weekly report generation", cost: "₹1.8L/mo", color: "#f87171" },
+    { name: "Data entry & cleanup",     cost: "₹3.1L/mo", color: "#fbbf24" },
+    { name: "Lead qualification calls", cost: "₹1.5L/mo", color: "#fbbf24" },
+    { name: "Invoice processing",       cost: "₹1.9L/mo", color: "#f87171" },
+  ];
+  return (
+    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 8 }}>
+      {workflows.map((w, i) => (
+        <div key={w.name} style={{
+          display: "flex", alignItems: "center", gap: 10,
+          opacity: active ? 1 : 0,
+          transform: active ? "translateX(0)" : "translateX(-14px)",
+          transition: `all 0.35s ${i * 0.18}s`,
+        }}>
+          <div style={{ width: 6, height: 6, borderRadius: "50%", background: w.color, flexShrink: 0, boxShadow: `0 0 5px ${w.color}` }} />
+          <span style={{ flex: 1, fontSize: 11, color: "#cbd5e1" }}>{w.name}</span>
+          <span style={{ fontSize: 10, fontWeight: 700, color: w.color, fontFamily: "monospace" }}>{w.cost}</span>
+        </div>
+      ))}
+      <div style={{
+        marginTop: 6, padding: "8px 12px",
+        background: "#f8717110", border: "1px solid #f8717138",
+        borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center",
+        opacity: active ? 1 : 0, transition: "opacity 0.5s 1.1s",
+      }}>
+        <span style={{ fontSize: 11, color: "#f87171" }}>💸 Annual waste identified</span>
+        <span style={{ fontSize: 18, fontWeight: 800, color: "#f87171", fontFamily: "monospace" }}>₹{totalWaste}L+/yr</span>
+      </div>
+    </div>
+  );
+}
+
+function PhaseAnimDesign({ active }: { active: boolean }) {
+  const mappings = [
+    { from: "Support tickets", to: "AI Support Agent", icon: "🎧", color: "#29abe2" },
+    { from: "Weekly reports",  to: "AI Report Bot",    icon: "📊", color: "#34d399" },
+    { from: "Lead calls",      to: "AI Sales Agent",   icon: "🎯", color: "#f5a623" },
+    { from: "Invoice review",  to: "AI Document AI",   icon: "🧾", color: "#818cf8" },
+  ];
+  return (
+    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 10 }}>
+      {mappings.map((m, i) => (
+        <div key={m.from} style={{
+          display: "flex", alignItems: "center", gap: 8,
+          opacity: active ? 1 : 0, transition: `opacity 0.35s ${i * 0.22}s`,
+        }}>
+          <div style={{ padding: "4px 9px", background: "#ffffff07", border: "1px solid #ffffff13", borderRadius: 6, fontSize: 10, color: "#94a3b8", whiteSpace: "nowrap" as const }}>{m.from}</div>
+          <span style={{ color: m.color, fontSize: 13, opacity: active ? 1 : 0, transition: `opacity 0.3s ${0.2 + i * 0.22}s` }}>→</span>
+          <div style={{
+            display: "flex", alignItems: "center", gap: 5,
+            padding: "4px 9px", background: m.color + "18", border: `1px solid ${m.color}40`,
+            borderRadius: 6, fontSize: 10, color: m.color, fontWeight: 600, whiteSpace: "nowrap" as const,
+            opacity: active ? 1 : 0, transform: active ? "scale(1)" : "scale(0.85)",
+            transition: `all 0.35s ${0.4 + i * 0.22}s`,
+          }}><span>{m.icon}</span>{m.to}</div>
+        </div>
+      ))}
+      <div style={{ display: "flex", gap: 5, marginTop: 6, flexWrap: "wrap", opacity: active ? 1 : 0, transition: "opacity 0.4s 1.4s" }}>
+        {["LLM", "RAG", "Agents", "Voice", "MCP"].map(t => (
+          <span key={t} style={{ fontSize: 9, fontWeight: 700, padding: "2px 7px", borderRadius: 10, background: "#29abe218", border: "1px solid #29abe240", color: "#29abe2" }}>{t}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PhaseAnimBuild({ active }: { active: boolean }) {
+  const lines = [
+    { text: "$ initialising AI project scaffold...", color: "#94a3b8" },
+    { text: "✓ LLM connected (claude-3.5-sonnet)",  color: "#34d399" },
+    { text: "✓ RAG pipeline: 1,240 docs indexed",   color: "#34d399" },
+    { text: "✓ Voice module initialised",            color: "#34d399" },
+    { text: "✓ Agent tools: 8 skills registered",   color: "#34d399" },
+    { text: "▶ running integration tests (47)...",  color: "#fbbf24" },
+    { text: "  ✓ 47 / 47 tests passing",             color: "#34d399" },
+    { text: "✓ Ready for production deploy",         color: "#29abe2" },
+  ];
+  return (
+    <div style={{ background: "#010409", border: "1px solid #ffffff13", borderRadius: 10, padding: "12px 14px", fontFamily: "monospace", width: "100%" }}>
+      <div style={{ display: "flex", gap: 5, marginBottom: 9 }}>
+        {["#f87171", "#fbbf24", "#34d399"].map(c => (
+          <div key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c }} />
+        ))}
+      </div>
+      {lines.map((l, i) => (
+        <div key={i} style={{
+          fontSize: 10, lineHeight: 1.8, color: l.color,
+          opacity: active ? 1 : 0, transition: `opacity 0.25s ${i * 0.3}s`,
+        }}>{l.text}</div>
+      ))}
+    </div>
+  );
+}
+
+function PhaseAnimDeploy({ active }: { active: boolean }) {
+  const v1 = useCounter(80, active, 1400);
+  const v2 = useCounter(3,  active, 900);
+  const v3 = useCounter(8,  active, 1100);
+  const stats = [
+    { label: "Tickets auto-resolved",  unit: "%", color: "#29abe2", val: v1, bar: 80 },
+    { label: "Team output multiplier", unit: "×", color: "#f5a623", val: v2, bar: 60 },
+    { label: "Monthly cost savings",   unit: "L", color: "#34d399", val: v3, bar: 80 },
+  ];
+  return (
+    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 18 }}>
+      {stats.map((s, i) => (
+        <div key={s.label} style={{
+          opacity: active ? 1 : 0,
+          transform: active ? "translateX(0)" : "translateX(18px)",
+          transition: `all 0.4s ${i * 0.2}s`,
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
+            <span style={{ fontSize: 11, color: "#94a3b8" }}>{s.label}</span>
+            <span style={{ fontSize: 20, fontWeight: 800, color: s.color, fontFamily: "monospace", lineHeight: 1 }}>{s.val}{s.unit}</span>
+          </div>
+          <div style={{ height: 4, background: "#ffffff0a", borderRadius: 2 }}>
+            <div style={{
+              height: "100%", background: s.color, borderRadius: 2,
+              width: active ? `${s.bar}%` : "0%",
+              transition: `width 1.2s ${0.3 + i * 0.2}s cubic-bezier(0.4,0,0.2,1)`,
+              boxShadow: `0 0 8px ${s.color}55`,
+            }} />
+          </div>
+        </div>
+      ))}
+      <div style={{ opacity: active ? 1 : 0, transition: "opacity 0.5s 1.4s", textAlign: "center" as const }}>
+        <span style={{ fontSize: 11, color: "#34d399", fontWeight: 700 }}>✓ Live in production — continuously improving</span>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
 const concepts = [
@@ -382,6 +521,33 @@ const concepts = [
 ];
 
 const conceptCategories = ["All", ...Array.from(new Set(concepts.map(c => c.category)))];
+
+const phaseDetails: string[][] = [
+  [
+    "Identify your costliest manual workflows and bottlenecks",
+    "Quantify time lost, error rates, and staff hours per task",
+    "Map each process to the right AI capability",
+    "Set clear ROI targets before any build begins",
+  ],
+  [
+    "Select the right architecture: RAG, Agent, or Voice",
+    "Design data flows and system integration touchpoints",
+    "Choose LLM provider and deployment strategy",
+    "Define a focused pilot scope for fast validation",
+  ],
+  [
+    "Build and test in focused 2–6 week sprint cycles",
+    "Integrate with your tools: CRM, Jira, Slack, and more",
+    "QA every edge case against real production scenarios",
+    "Deliver fully documented, production-ready code",
+  ],
+  [
+    "Deploy with live monitoring and alerting in place",
+    "Measure automation rates, time savings, and cost delta",
+    "Refine prompts and workflows from real usage patterns",
+    "Scale to new processes as confidence and ROI grows",
+  ],
+];
 
 const productCategories = [
   {
@@ -431,9 +597,6 @@ const journeyPhases = [
   { icon: "⚙️", title: "Build",     desc: "Thiravugal engineers your solution in 2–6 weeks",            color: "#34d399", step: "03" },
   { icon: "🚀", title: "Deploy",    desc: "Go live, measure impact, and improve continuously",          color: "#818cf8", step: "04" },
 ];
-
-// ── Replace with your YouTube video ID to activate the embed ──
-const YOUTUBE_VIDEO_ID = "";
 
 // ── Image per product category ──
 const categoryImages: Record<string, string> = {
@@ -695,74 +858,132 @@ function JourneySection() {
 }
 
 /* ─────────────────────────────────────────────
-   VIDEO SECTION
+   VIDEO SECTION → JOURNEY ANIMATION
 ───────────────────────────────────────────── */
+const JOURNEY_PHASE_DURATION = 4500;
+
 function VideoSection() {
-  const { ref, visible } = useInView(0.1);
-  const [playing, setPlaying] = useState(false);
+  const { ref, visible } = useInView(0.08);
+  const [activePhase, setActivePhase] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const animRef = useRef<number>(0);
+  const startRef = useRef<number>(0);
+
+  useEffect(() => {
+    if (!visible) return;
+    startRef.current = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - startRef.current;
+      const pct = Math.min((elapsed / JOURNEY_PHASE_DURATION) * 100, 100);
+      setProgress(pct);
+      if (pct < 100) {
+        animRef.current = requestAnimationFrame(tick);
+      } else {
+        setActivePhase(p => (p + 1) % 4);
+      }
+    };
+    animRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [activePhase, visible]);
+
+  const phaseColors = ["#29abe2", "#f5a623", "#34d399", "#818cf8"];
+  const PhaseAnims = [PhaseAnimDiscover, PhaseAnimDesign, PhaseAnimBuild, PhaseAnimDeploy];
+  const currentColor = phaseColors[activePhase];
 
   return (
     <section ref={ref} style={{ padding: "80px 16px", background: "linear-gradient(180deg,#08112a,#060f2e)" }}>
-      <div style={{ maxWidth: 860, margin: "0 auto" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <p className="aip-section-eyebrow" style={{ color: "#29abe2" }}>Watch</p>
+          <p className="aip-section-eyebrow" style={{ color: "#29abe2" }}>Live Demo</p>
           <h2 style={{ fontSize: "clamp(22px,3.5vw,36px)", fontWeight: 800, color: "#f1f5f9", margin: "0 0 10px" }}>
-            The AI Product Journey
+            The AI Transformation Journey
           </h2>
           <p style={{ fontSize: 14, color: "#94a3b8" }}>
-            See how a software business transforms — from idea to impact
+            Watch how a software business transforms — from audit to live production
           </p>
         </div>
 
-        <div className="aij-video-outer" style={{
+        <div className="janim-card" style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(24px)",
           transition: "all 0.6s 0.1s",
         }}>
-          {playing && YOUTUBE_VIDEO_ID ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1`}
-              title="AI Product Journey"
-              allow="autoplay; fullscreen"
-              style={{ width: "100%", height: "100%", border: "none" }}
-            />
-          ) : (
-            <div className="aij-video-placeholder" onClick={() => YOUTUBE_VIDEO_ID && setPlaying(true)}
-              style={{ cursor: YOUTUBE_VIDEO_ID ? "pointer" : "default" }}>
-              <div className="aij-video-bg" />
+          {/* Phase tabs with live progress bar */}
+          <div className="janim-phase-tabs">
+            {journeyPhases.map((phase, i) => (
+              <div key={phase.title} className="janim-tab" onClick={() => setActivePhase(i)}
+                style={{ borderRight: i < 3 ? "1px solid #ffffff0a" : "none" }}>
+                <div style={{
+                  fontSize: 9, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase" as const,
+                  color: activePhase === i ? phaseColors[i] : "#374151", marginBottom: 2, transition: "color 0.3s",
+                }}>{phase.step}</div>
+                <div style={{
+                  fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" as const,
+                  color: activePhase === i ? "#f1f5f9" : "#6b7280", transition: "color 0.3s",
+                }}>{phase.icon} {phase.title}</div>
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: "#ffffff06" }}>
+                  <div style={{
+                    height: "100%", background: phaseColors[i],
+                    width: activePhase === i ? `${progress}%` : activePhase > i ? "100%" : "0%",
+                    transition: activePhase === i ? "none" : "width 0.3s",
+                    boxShadow: activePhase === i ? `0 0 6px ${phaseColors[i]}` : "none",
+                  }} />
+                </div>
+              </div>
+            ))}
+          </div>
 
-              {/* Floating journey mini-animation */}
-              <div className="aij-video-flow" style={{ opacity: visible ? 1 : 0, transition: "opacity 0.8s 0.4s" }}>
-                {journeyPhases.map((p, i) => (
-                  <div key={p.title} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <div className="aij-flow-step" style={{
-                      background: p.color + "22", border: `1px solid ${p.color}55`,
-                      animationDelay: `${i * 0.4}s`,
-                    }}>
-                      <span>{p.icon}</span>
-                      <span style={{ fontSize: 10, color: p.color, fontWeight: 600 }}>{p.title}</span>
-                    </div>
-                    {i < 3 && <span style={{ color: "#4b5563", fontSize: 14 }}>→</span>}
+          {/* 2-col body */}
+          <div className="janim-body">
+            {/* Left — phase description */}
+            <div className="janim-info">
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase" as const,
+                color: currentColor, opacity: 0.75, marginBottom: 8,
+              }}>Phase {journeyPhases[activePhase].step}</div>
+              <h3 style={{ fontSize: "clamp(20px,2.5vw,26px)", fontWeight: 800, color: "#f1f5f9", margin: "0 0 10px", lineHeight: 1.2 }}>
+                {journeyPhases[activePhase].icon} {journeyPhases[activePhase].title}
+              </h3>
+              <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, margin: "0 0 18px" }}>
+                {journeyPhases[activePhase].desc}
+              </p>
+              {phaseDetails[activePhase].map((d, i) => (
+                <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 8 }}>
+                  <span style={{ color: currentColor, fontSize: 11, marginTop: 2, flexShrink: 0 }}>→</span>
+                  <span style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.5 }}>{d}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Right — live animation */}
+            <div className="janim-anim">
+              <div style={{ position: "relative", width: "100%", height: 260 }}>
+                {PhaseAnims.map((Comp, i) => (
+                  <div key={i} style={{
+                    position: "absolute", inset: 0, display: "flex", alignItems: "center",
+                    opacity: activePhase === i ? 1 : 0, transition: "opacity 0.4s",
+                    pointerEvents: activePhase === i ? "auto" : "none",
+                  }}>
+                    <Comp active={activePhase === i} />
                   </div>
                 ))}
               </div>
-
-              {/* Play button overlay */}
-              <div style={{ position: "relative", zIndex: 3, textAlign: "center", marginTop: 32 }}>
-                <div className={`aij-play-btn ${!YOUTUBE_VIDEO_ID ? "aij-play-disabled" : ""}`}>
-                  <span style={{ fontSize: 22, marginLeft: 4 }}>▶</span>
-                </div>
-                <p style={{ color: "#94a3b8", fontSize: 13, marginTop: 14 }}>
-                  {YOUTUBE_VIDEO_ID ? "Click to play the 90-second demo" : "Video demo coming soon"}
-                </p>
-                {!YOUTUBE_VIDEO_ID && (
-                  <div style={{ marginTop: 10, display: "inline-flex", gap: 6, alignItems: "center", background: "#f5a62318", border: "1px solid #f5a62340", borderRadius: 8, padding: "5px 12px" }}>
-                    <span style={{ fontSize: 11, color: "#f5a623" }}>Set YOUTUBE_VIDEO_ID in page.tsx to activate</span>
-                  </div>
-                )}
-              </div>
             </div>
-          )}
+          </div>
+
+          {/* Nav dots */}
+          <div className="janim-dots">
+            {journeyPhases.map((_, i) => (
+              <div key={i} className="janim-dot" onClick={() => setActivePhase(i)} style={{
+                background: activePhase === i ? phaseColors[i] : "#ffffff18",
+                transform: activePhase === i ? "scale(1.35)" : "scale(1)",
+                boxShadow: activePhase === i ? `0 0 8px ${phaseColors[i]}` : "none",
+              }} />
+            ))}
+            <span style={{ fontSize: 11, color: "#4b5563", marginLeft: 8 }}>
+              Click to navigate · auto-advances every {JOURNEY_PHASE_DURATION / 1000}s
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -918,17 +1139,22 @@ export default function AiConceptsPage() {
         .aij-stat-num { font-size:38px;font-weight:800;line-height:1;margin-bottom:6px; }
         .aij-stat-label { font-size:12px;color:#94a3b8; }
 
-        /* ── Video section ── */
-        .aij-video-outer { border-radius:16px;overflow:hidden;border:1px solid #29abe244;aspect-ratio:16/9;box-shadow:0 0 60px #29abe218;position:relative; }
-        .aij-video-placeholder { width:100%;height:100%;background-image:url('/AI_bg.png');background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:24px; }
-        .aij-video-bg { position:absolute;inset:0;background:rgba(4,10,36,0.78);animation:aijVideoBg 4s ease-in-out infinite alternate; }
-        @keyframes aijVideoBg { from{opacity:0.8;} to{opacity:1;} }
-        .aij-video-flow { display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2; }
-        .aij-flow-step { display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;animation:aijFlowPulse 2s ease-in-out infinite alternate; }
-        @keyframes aijFlowPulse { from{opacity:0.7;transform:translateY(0);} to{opacity:1;transform:translateY(-3px);} }
-        .aij-play-btn { width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#29abe2,#1a237e);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 0 0 8px #29abe222,0 0 0 16px #29abe211;animation:aijPlayPulse 2s ease-in-out infinite;cursor:pointer; }
-        .aij-play-disabled { background:linear-gradient(135deg,#334155,#1e293b);cursor:default;box-shadow:0 0 0 8px #33415520,0 0 0 16px #33415510;animation:none; }
-        @keyframes aijPlayPulse { 0%,100%{box-shadow:0 0 0 8px #29abe222,0 0 0 16px #29abe211;} 50%{box-shadow:0 0 0 14px #29abe214,0 0 0 28px #29abe208;} }
+        /* ── Journey animation card ── */
+        .janim-card { background:linear-gradient(160deg,#0a1535 0%,#060f2e 100%);border:1px solid #ffffff0f;border-radius:20px;overflow:hidden; }
+        .janim-phase-tabs { display:flex;border-bottom:1px solid #ffffff0a; }
+        .janim-tab { flex:1;padding:16px 18px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.2s; }
+        .janim-tab:hover { background:#ffffff04; }
+        .janim-body { display:grid;grid-template-columns:2fr 3fr; }
+        .janim-info { padding:36px 40px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid #ffffff08; }
+        .janim-anim { padding:32px;background:#050c22;display:flex;align-items:center; }
+        .janim-dots { display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-top:1px solid #ffffff08;background:#040a22; }
+        .janim-dot { width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s; }
+        @media (max-width:720px) {
+          .janim-body { grid-template-columns:1fr; }
+          .janim-info { border-right:none;border-bottom:1px solid #ffffff08;padding:24px 20px; }
+          .janim-anim { padding:20px; }
+          .janim-tab { padding:12px 8px; }
+        }
       `}</style>
 
       <div className="fixed top-0 left-0 right-0 z-50">
