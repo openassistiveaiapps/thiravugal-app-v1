@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -827,9 +828,9 @@ export default function AiConceptsPage() {
 
         /* ── Video section ── */
         .aij-video-outer { border-radius:16px;overflow:hidden;border:1px solid #29abe244;aspect-ratio:16/9;box-shadow:0 0 60px #29abe218;position:relative; }
-        .aij-video-placeholder { width:100%;height:100%;background:linear-gradient(135deg,#060f2e,#0d1b4b);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:24px; }
-        .aij-video-bg { position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,#29abe218 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,#1a237e22 0%,transparent 60%);animation:aijVideoBg 4s ease-in-out infinite alternate; }
-        @keyframes aijVideoBg { from{opacity:0.5;transform:scale(1);} to{opacity:1;transform:scale(1.05);} }
+        .aij-video-placeholder { width:100%;height:100%;background-image:url('/AI_bg.png');background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:24px; }
+        .aij-video-bg { position:absolute;inset:0;background:rgba(4,10,36,0.78);animation:aijVideoBg 4s ease-in-out infinite alternate; }
+        @keyframes aijVideoBg { from{opacity:0.8;} to{opacity:1;} }
         .aij-video-flow { display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2; }
         .aij-flow-step { display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;animation:aijFlowPulse 2s ease-in-out infinite alternate; }
         @keyframes aijFlowPulse { from{opacity:0.7;transform:translateY(0);} to{opacity:1;transform:translateY(-3px);} }
@@ -842,34 +843,76 @@ export default function AiConceptsPage() {
         <Navbar />
       </div>
 
-      <main style={{ background: "linear-gradient(180deg,#060f2e 0%,#0d1b4b 30%,#0a0a0a 100%)", minHeight: "100vh", paddingTop: 80 }}>
+      <main style={{ background: "#060f2e", minHeight: "100vh" }}>
 
-        {/* ── Hero ── */}
-        <div style={{ padding: "60px 16px 48px", textAlign: "center" }}>
-          <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "#29abe2", marginBottom: 12 }}>
-            AI Knowledge Hub
-          </p>
-          <h1 style={{ fontSize: "clamp(28px,5vw,50px)", fontWeight: 800, color: "#f1f5f9", margin: "0 auto 16px", lineHeight: 1.2, maxWidth: 720 }}>
-            AI Concepts, Products &{" "}
-            <span style={{ background: "linear-gradient(90deg,#29abe2,#f5a623)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Business Impact
-            </span>
-          </h1>
-          <p style={{ fontSize: 16, color: "#94a3b8", maxWidth: 580, margin: "0 auto 12px", lineHeight: 1.6 }}>
-            Understand the AI technologies reshaping software businesses — and see the real products Thiravugal builds using them.
-          </p>
-          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 24 }}>
-            <a href="#journey" style={{ padding: "10px 24px", borderRadius: 24, background: "linear-gradient(135deg,#29abe2,#1a237e)", color: "#fff", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>
-              See the Journey ↓
-            </a>
-            <a href="#products" style={{ padding: "10px 24px", borderRadius: 24, border: "1px solid #ffffff22", color: "#e2e8f0", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>
-              View AI Products ↓
-            </a>
+        {/* ── Hero — full-screen with AI_bg.png ── */}
+        <div style={{
+          position: "relative",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: "url('/AI_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          paddingTop: 80,
+        }}>
+          {/* Overlay: dark tint */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(4,10,36,0.72)" }} />
+          {/* Overlay: bottom fade to blend into next section */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, #060f2e 100%)" }} />
+
+          {/* Content */}
+          <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "60px 16px 100px", maxWidth: 860, margin: "0 auto", width: "100%" }}>
+            {/* Eyebrow badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#29abe218", border: "1px solid #29abe244", borderRadius: 20, padding: "6px 18px", marginBottom: 28 }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#29abe2", boxShadow: "0 0 8px #29abe2" }} />
+              <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase" as const, color: "#29abe2" }}>
+                AI Knowledge Hub
+              </span>
+            </div>
+
+            <h1 style={{ fontSize: "clamp(36px,6vw,72px)", fontWeight: 800, color: "#fff", margin: "0 auto 22px", lineHeight: 1.1, maxWidth: 820, textShadow: "0 2px 24px rgba(0,0,0,0.6)" }}>
+              AI Concepts, Products &{" "}
+              <span style={{ background: "linear-gradient(90deg,#29abe2,#f5a623)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                Business Impact
+              </span>
+            </h1>
+
+            <p style={{ fontSize: 18, color: "rgba(255,255,255,0.72)", maxWidth: 620, margin: "0 auto 40px", lineHeight: 1.7 }}>
+              Understand the AI technologies reshaping software businesses — and see the real products Thiravugal builds using them.
+            </p>
+
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="#journey" style={{
+                padding: "15px 36px", borderRadius: 32,
+                background: "linear-gradient(135deg,#29abe2,#1a237e)",
+                color: "#fff", fontWeight: 700, fontSize: 15, textDecoration: "none",
+                boxShadow: "0 4px 24px #29abe244",
+              }}>
+                See the Journey ↓
+              </a>
+              <a href="#products" style={{
+                padding: "15px 36px", borderRadius: 32,
+                border: "2px solid rgba(255,255,255,0.28)",
+                color: "#fff", fontWeight: 700, fontSize: 15, textDecoration: "none",
+                background: "rgba(255,255,255,0.07)", backdropFilter: "blur(8px)",
+              }}>
+                View AI Products ↓
+              </a>
+            </div>
+
+            {/* Scroll cue */}
+            <div style={{ marginTop: 64, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, opacity: 0.45 }}>
+              <div style={{ width: 1, height: 44, background: "linear-gradient(180deg,transparent,#fff)" }} />
+              <span style={{ fontSize: 10, color: "#fff", letterSpacing: ".12em", textTransform: "uppercase" as const }}>Scroll</span>
+            </div>
           </div>
         </div>
 
         {/* ── Journey Section ── */}
-        <div id="journey"><JourneySection /></div>
+        <div id="journey" style={{ background: "linear-gradient(180deg,#060f2e 0%,#080e28 100%)" }}><JourneySection /></div>
 
         {/* ── Video Section ── */}
         <VideoSection />
@@ -883,7 +926,7 @@ export default function AiConceptsPage() {
             Technology Deep-Dive
           </p>
           <h2 style={{ fontSize: "clamp(22px,4vw,38px)", fontWeight: 800, color: "#f1f5f9", margin: "0 auto 14px", lineHeight: 1.2, maxWidth: 640 }}>
-            15 AI Concepts — Animated
+            AI Concepts Every Software Business Should Know
           </h2>
           <p style={{ fontSize: 15, color: "#94a3b8", maxWidth: 520, margin: "0 auto 32px", lineHeight: 1.6 }}>
             Each concept explained visually with a real-world business use case.
@@ -904,22 +947,40 @@ export default function AiConceptsPage() {
         </div>
 
         {/* ── CTA ── */}
-        <div style={{ textAlign: "center", padding: "64px 16px 80px", borderTop: "1px solid #ffffff0a", background: "linear-gradient(180deg,transparent,#060f2e)" }}>
-          <h2 style={{ fontSize: 26, fontWeight: 700, color: "#f1f5f9", marginBottom: 12 }}>
-            Ready to build AI into your business?
-          </h2>
-          <p style={{ color: "#94a3b8", marginBottom: 28, fontSize: 14 }}>
-            Thiravugal consults, builds, and deploys custom AI — chatbots, agents, voice AI, automation — tailored to your workflows.
-          </p>
-          <a href="/#contact" style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "linear-gradient(135deg,#f5a623,#e0921a)",
-            color: "#fff", fontWeight: 700, fontSize: 14,
-            padding: "13px 30px", borderRadius: 30, textDecoration: "none",
-            boxShadow: "0 4px 20px #f5a62344",
-          }}>
-            Talk to Us — It&apos;s Free →
-          </a>
+        <div style={{
+          textAlign: "center", padding: "80px 16px 100px",
+          position: "relative", overflow: "hidden",
+          backgroundImage: "url('/AI_bg.png')", backgroundSize: "cover", backgroundPosition: "center bottom",
+        }}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,#060f2e 0%,rgba(4,10,36,0.88) 40%,rgba(4,10,36,0.92) 100%)" }} />
+          <div style={{ position: "relative", zIndex: 2 }}>
+            <h2 style={{ fontSize: "clamp(24px,4vw,40px)", fontWeight: 800, color: "#fff", marginBottom: 14, textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}>
+              Ready to build AI into your business?
+            </h2>
+            <p style={{ color: "rgba(255,255,255,0.65)", marginBottom: 36, fontSize: 16, maxWidth: 520, margin: "0 auto 36px", lineHeight: 1.6 }}>
+              Thiravugal consults, builds, and deploys custom AI — chatbots, agents, voice AI, automation — tailored to your workflows.
+            </p>
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="/#contact" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "linear-gradient(135deg,#f5a623,#e0921a)",
+                color: "#fff", fontWeight: 700, fontSize: 15,
+                padding: "15px 36px", borderRadius: 32, textDecoration: "none",
+                boxShadow: "0 4px 24px #f5a62355",
+              }}>
+                Talk to Us — It&apos;s Free →
+              </a>
+              <Link href="/products" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                border: "2px solid rgba(255,255,255,0.28)",
+                color: "#fff", fontWeight: 700, fontSize: 15,
+                padding: "15px 36px", borderRadius: 32, textDecoration: "none",
+                background: "rgba(255,255,255,0.08)", backdropFilter: "blur(8px)",
+              }}>
+                Explore AI Solutions
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
 
