@@ -435,6 +435,23 @@ const journeyPhases = [
 // ── Replace with your YouTube video ID to activate the embed ──
 const YOUTUBE_VIDEO_ID = "";
 
+// ── Image per product category ──
+const categoryImages: Record<string, string> = {
+  customer:  "/10.jpg",   // AI robot with business growth icons
+  internal:  "/1.jpg",    // AI pen writing content
+  data:      "/5.jpg",    // AI device projecting growth charts
+  industry:  "/2.jpg",    // Invoice & contract processing
+};
+
+// ── Image per AI concept category ──
+const conceptCategoryImages: Record<string, string> = {
+  Foundation:       "/11.jpg",    // AI neural face
+  Enhancement:      "/3.jpg",     // Data funnel
+  Agents:           "/AI_bg.png", // Holographic brain
+  Interaction:      "/6.jpg",     // Smart AI assistant
+  "Voice & Speech": "/9.jpg",     // Microphone with sonic rings
+};
+
 /* ─────────────────────────────────────────────
    PRODUCT CARD
 ───────────────────────────────────────────── */
@@ -471,9 +488,10 @@ function ProductCard({ product, color, index }: {
 function ProductsSection() {
   const [activeCat, setActiveCat] = useState("customer");
   const category = productCategories.find(c => c.id === activeCat) || productCategories[0];
+
   return (
-    <section style={{ padding: "80px 16px", borderTop: "1px solid #ffffff08" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <section style={{ padding: "80px 0", borderTop: "1px solid #ffffff08" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <p className="aip-section-eyebrow">What We Build</p>
           <h2 className="aip-section-title">
@@ -489,7 +507,7 @@ function ProductsSection() {
         </div>
 
         {/* Category tabs */}
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", marginBottom: 12 }}>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", marginBottom: 32 }}>
           {productCategories.map(cat => (
             <button key={cat.id} onClick={() => setActiveCat(cat.id)} className="aip-tab" style={{
               borderColor: activeCat === cat.id ? cat.color : "#ffffff18",
@@ -500,15 +518,83 @@ function ProductsSection() {
             </button>
           ))}
         </div>
-        <p style={{ textAlign: "center", fontSize: 13, color: "#4b5563", marginBottom: 32 }}>{category.description}</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
-          {category.products.map((p, i) => (
-            <ProductCard key={p.title} product={p} color={category.color} index={i} />
-          ))}
+        {/* Split layout: big image left, cards right */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)",
+          borderRadius: 20,
+          overflow: "hidden",
+          border: "1px solid #ffffff0f",
+          minHeight: 480,
+        }}>
+          {/* Left — category image with overlay */}
+          <div style={{
+            position: "relative",
+            backgroundImage: `url('${categoryImages[activeCat]}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            minHeight: 320,
+          }}>
+            <div style={{
+              position: "absolute", inset: 0,
+              background: `linear-gradient(160deg, ${category.color}55 0%, rgba(4,10,36,0.82) 100%)`,
+            }} />
+            <div style={{
+              position: "relative", zIndex: 2, padding: "44px 40px",
+              height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            }}>
+              <span style={{ fontSize: 44, marginBottom: 12, display: "block" }}>{category.icon}</span>
+              <h3 style={{ fontSize: 30, fontWeight: 800, color: "#fff", margin: "0 0 10px", lineHeight: 1.2, textShadow: "0 2px 16px rgba(0,0,0,0.6)" }}>
+                {category.label}
+              </h3>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.78)", lineHeight: 1.6, margin: "0 0 20px" }}>
+                {category.description}
+              </p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: category.color + "25", border: `1px solid ${category.color}55`, borderRadius: 20, padding: "6px 14px", width: "fit-content" }}>
+                <span style={{ fontSize: 12, color: category.color, fontWeight: 700 }}>
+                  {category.products.length} AI solutions →
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — product cards */}
+          <div style={{ background: "#080e28", padding: "32px 28px", display: "flex", flexDirection: "column", gap: 14 }}>
+            {category.products.map((p, i) => (
+              <ProductCard key={p.title} product={p} color={category.color} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   CONCEPT CATEGORY BANNER
+───────────────────────────────────────────── */
+function ConceptCategoryBanner({ category }: { category: string }) {
+  if (category === "All") return null;
+  const img = conceptCategoryImages[category];
+  if (!img) return null;
+  const count = concepts.filter(c => c.category === category).length;
+  return (
+    <div style={{ position: "relative", height: 200, borderRadius: 16, overflow: "hidden", marginBottom: 28 }}>
+      <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${img}')`, backgroundSize: "cover", backgroundPosition: "center" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(4,10,36,0.82) 0%, rgba(4,10,36,0.5) 100%)" }} />
+      <div style={{ position: "relative", zIndex: 2, padding: "40px 36px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase" as const, color: "#29abe2", margin: "0 0 8px" }}>
+          Category
+        </p>
+        <h3 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 800, color: "#fff", margin: "0 0 6px", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
+          {category}
+        </h3>
+        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, margin: 0 }}>
+          {count} concept{count !== 1 ? "s" : ""} with animated explainers and business use cases
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -585,13 +671,19 @@ function JourneySection() {
         </div>
 
         {/* Stats row */}
-        <div style={{ display: "flex", borderTop: "1px solid #ffffff08", marginTop: 0, flexWrap: "wrap" }}>
+        <div style={{
+          display: "flex", borderTop: "1px solid #ffffff08", marginTop: 0, flexWrap: "wrap",
+          position: "relative", overflow: "hidden",
+          backgroundImage: "url('/8.jpg')", backgroundSize: "cover", backgroundPosition: "center",
+        }}>
+          {/* Dark overlay so numbers stay readable */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(4,10,36,0.82)" }} />
           {[
             { num: `${c80}%`,    label: "Repetitive tasks automated", color: "#29abe2" },
             { num: `${c3}×`,     label: "Team output increase",       color: "#f5a623" },
             { num: `${c6} wks`,  label: "Average delivery time",      color: "#34d399" },
           ].map((stat, i) => (
-            <div key={stat.label} className="aij-stat" style={{ borderLeft: i > 0 ? "1px solid #ffffff08" : "none" }}>
+            <div key={stat.label} className="aij-stat" style={{ borderLeft: i > 0 ? "1px solid #ffffff18" : "none", position: "relative", zIndex: 1 }}>
               <div className="aij-stat-num" style={{ color: stat.color }}>{stat.num}</div>
               <div className="aij-stat-label">{stat.label}</div>
             </div>
@@ -812,9 +904,9 @@ export default function AiConceptsPage() {
         .aip-section-title { font-size:clamp(24px,4vw,40px);font-weight:800;color:#f1f5f9;margin:0 0 16px;line-height:1.2; }
 
         /* ── Journey section ── */
-        .aij-state { background:#060f2e;border:1px solid #ffffff0d;border-radius:16px;padding:20px 24px;min-width:220px;flex:1;max-width:320px; }
-        .aij-state-label { font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px; }
-        .aij-state-item { font-size:12px;color:#94a3b8;padding:6px 0;display:flex;gap:8px;align-items:center;border-bottom:1px solid #ffffff06; }
+        .aij-state { background:#0a1535;border:1px solid #ffffff15;border-radius:16px;padding:24px 28px;min-width:240px;flex:1;max-width:340px; }
+        .aij-state-label { font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px; }
+        .aij-state-item { font-size:14px;color:#e2e8f0;padding:8px 0;display:flex;gap:10px;align-items:center;border-bottom:1px solid #ffffff0a;line-height:1.4; }
         .aij-state-item:last-child { border-bottom:none; }
         .aij-transform-arrow { font-size:28px;color:#29abe2;animation:aijArrow 1s ease-in-out infinite alternate; }
         @keyframes aijArrow { from{transform:translateX(-4px);opacity:0.6;} to{transform:translateX(4px);opacity:1;} }
@@ -926,11 +1018,8 @@ export default function AiConceptsPage() {
             Technology Deep-Dive
           </p>
           <h2 style={{ fontSize: "clamp(22px,4vw,38px)", fontWeight: 800, color: "#f1f5f9", margin: "0 auto 14px", lineHeight: 1.2, maxWidth: 640 }}>
-            AI Concepts Every Software Business Should Know
+            AI Concepts
           </h2>
-          <p style={{ fontSize: 15, color: "#94a3b8", maxWidth: 520, margin: "0 auto 32px", lineHeight: 1.6 }}>
-            Each concept explained visually with a real-world business use case.
-          </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
             {conceptCategories.map(cat => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
@@ -942,8 +1031,11 @@ export default function AiConceptsPage() {
         </div>
 
         {/* ── Concept Cards Grid ── */}
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px 80px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
-          {filtered.map(concept => <ConceptCard key={concept.id} concept={concept} />)}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px 80px" }}>
+          <ConceptCategoryBanner category={activeCategory} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
+            {filtered.map(concept => <ConceptCard key={concept.id} concept={concept} />)}
+          </div>
         </div>
 
         {/* ── CTA ── */}
