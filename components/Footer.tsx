@@ -30,9 +30,9 @@ const company = [
 ];
 
 const socials = [
-  { icon: Linkedin, href: "#", color: "#0077B5" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/thiravugal-academy-00044a3b9", color: "#0077B5" },
   { icon: Youtube, href: "#", color: "#FF0000" },
-  { icon: Instagram, href: "#", color: "#E1306C" },
+  { icon: Instagram, href: "https://www.instagram.com/thiravugal/", color: "#E1306C" },
   { icon: Twitter, href: "#", color: "#1DA1F2" },
 ];
 
@@ -96,6 +96,8 @@ export default function Footer({ hideCta = false }: { hideCta?: boolean }) {
                   <a
                     key={i}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
                   >
                     <Icon className="w-4 h-4 text-gray-400 hover:text-white" />
