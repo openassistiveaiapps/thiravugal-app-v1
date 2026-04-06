@@ -46,14 +46,12 @@ export default function DemoPage() {
       <header className="border-b border-white/10 bg-gray-950/95 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-full overflow-hidden">
+            <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0">
               <Image src="/logo.jpeg" alt="Thiravugal" fill className="object-cover" />
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-white text-sm tracking-wide">THIRAVUGAL</span>
-              <span className="text-xs bg-[#29abe2]/20 text-[#29abe2] px-2 py-0.5 rounded-full border border-[#29abe2]/30 hidden sm:inline">
-                AI Demo Lab
-              </span>
+            <div>
+              <div className="font-display font-bold text-white text-sm tracking-wide leading-tight">THIRAVUGAL</div>
+              <div className="text-xs text-[#29abe2] tracking-wide leading-tight">AI Demo Lab</div>
             </div>
           </div>
           <button
@@ -117,7 +115,7 @@ export default function DemoPage() {
 
           <div className="mt-6 p-3 rounded-xl bg-gradient-to-br from-[#1a237e]/40 to-[#29abe2]/10 border border-[#29abe2]/20">
             <Sparkles className="w-5 h-5 text-[#29abe2] mb-2" />
-            <p className="text-xs text-gray-300 leading-relaxed">Powered by Claude AI — Anthropic&apos;s most capable model</p>
+            <p className="text-xs text-gray-300 leading-relaxed">Powered by AI — Using most capable model</p>
           </div>
         </aside>
 

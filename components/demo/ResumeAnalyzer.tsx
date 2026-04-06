@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Upload, UserCheck, Loader2, X, FileText } from "lucide-react";
+import { compressImage } from "@/lib/compressImage";
 
 export default function ResumeAnalyzer() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -11,15 +12,22 @@ export default function ResumeAnalyzer() {
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = (f: File) => {
-    setResumeFile(f);
+  const handleFile = async (f: File) => {
     setResult("");
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      setFileBase64(dataUrl.split(",")[1]);
-    };
-    reader.readAsDataURL(f);
+    if (f.type.startsWith("image/")) {
+      const { base64, mimeType } = await compressImage(f);
+      setFileBase64(base64);
+      setResumeFile(new File([f], f.name, { type: mimeType }));
+    } else {
+      // PDF or text — send raw, server extracts text
+      setResumeFile(f);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        setFileBase64(dataUrl.split(",")[1]);
+      };
+      reader.readAsDataURL(f);
+    }
   };
 
   const analyze = async () => {

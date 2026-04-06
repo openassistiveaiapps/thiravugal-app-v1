@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Upload, Send, FileText, X, Bot, User, Loader2 } from "lucide-react";
+import { compressImage } from "@/lib/compressImage";
 
 interface Message {
   role: "user" | "assistant";
@@ -28,15 +29,22 @@ export default function DocumentChat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleFile = (f: File) => {
+  const handleFile = async (f: File) => {
     setFile(f);
     setMessages([]);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      setFileBase64(dataUrl.split(",")[1]);
-    };
-    reader.readAsDataURL(f);
+    if (f.type.startsWith("image/")) {
+      const { base64, mimeType } = await compressImage(f);
+      setFileBase64(base64);
+      setFile(new File([f], f.name, { type: mimeType }));
+    } else {
+      // PDF or text — send raw base64, server extracts text
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        setFileBase64(dataUrl.split(",")[1]);
+      };
+      reader.readAsDataURL(f);
+    }
   };
 
   const sendMessage = async (text: string) => {
@@ -88,7 +96,7 @@ export default function DocumentChat() {
           <input
             ref={fileInputRef}
             type="file"
-            accept=".pdf,.txt,.md,image/*"
+            accept=".pdf,.txt,.md,.csv,image/*"
             className="hidden"
             onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
           />

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Upload, Receipt, Loader2, X, RefreshCw } from "lucide-react";
+import { compressImage } from "@/lib/compressImage";
 
 const TAX_TAGS = ["CGST / SGST split", "IGST", "TDS deduction", "HSN/SAC codes", "Invoice totals", "Vendor GST No."];
 
@@ -13,16 +14,24 @@ export default function ReceiptAnalyzer() {
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = (f: File) => {
-    setFile(f);
+  const handleFile = async (f: File) => {
     setResult("");
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      setPreview(f.type.startsWith("image/") ? dataUrl : "");
-      setFileBase64(dataUrl.split(",")[1]);
-    };
-    reader.readAsDataURL(f);
+    if (f.type.startsWith("image/")) {
+      const { base64 } = await compressImage(f);
+      setPreview(`data:image/jpeg;base64,${base64}`);
+      setFileBase64(base64);
+      setFile(new File([f], f.name, { type: "image/jpeg" }));
+    } else {
+      // PDF — send raw, server extracts text
+      setFile(f);
+      setPreview("");
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        setFileBase64(dataUrl.split(",")[1]);
+      };
+      reader.readAsDataURL(f);
+    }
   };
 
   const analyze = async () => {

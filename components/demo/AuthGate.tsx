@@ -6,8 +6,8 @@ import { Lock, Mail, Eye, EyeOff, Sparkles } from "lucide-react";
 
 // Hardcoded demo credentials — change these as needed
 const CREDENTIALS = [
-  { email: "demo@thiravugal.in", pin: "2024" },
-  { email: "admin@thiravugal.in", pin: "0000" },
+  { email: "demo@thiravugal.in", pin: "0609" },
+  { email: "admin@thiravugal.in", pin: "1609" },
 ];
 
 export default function AuthGate({ onSuccess }: { onSuccess: () => void }) {
@@ -105,7 +105,7 @@ export default function AuthGate({ onSuccess }: { onSuccess: () => void }) {
           </form>
 
           <p className="text-center text-xs text-gray-600 mt-6">
-            Powered by Claude AI · Thiravugal Internal Demo
+            Powered by AI · Thiravugal Internal Demo
           </p>
         </div>
       </div>

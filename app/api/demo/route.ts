@@ -1,7 +1,27 @@
-import Anthropic from "@anthropic-ai/sdk";
+import Groq from "groq-sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { PDFParse } from "pdf-parse";
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
+const TEXT_MODEL = "llama-3.3-70b-versatile";
+const VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
+const MAX_TEXT_CHARS = 20000;
+
+async function extractText(base64: string, mimeType: string): Promise<string> {
+  let text = "";
+  if (mimeType === "application/pdf") {
+    const buffer = Buffer.from(base64, "base64");
+    const parser = new PDFParse({ data: buffer });
+    const result = await parser.getText();
+    text = result.text.trim();
+  } else {
+    text = Buffer.from(base64, "base64").toString("utf-8");
+  }
+  return text.length > MAX_TEXT_CHARS
+    ? text.slice(0, MAX_TEXT_CHARS) + "\n\n[...truncated...]"
+    : text;
+}
 
 const SYSTEM_PROMPTS: Record<string, string> = {
   "document-chat": `You are a helpful document assistant. The user has uploaded a document and may ask questions, request summaries, or want key information extracted. Be concise and accurate. Use markdown formatting when it improves clarity.`,
@@ -32,65 +52,75 @@ Be constructive, specific, and actionable. Use markdown with clear section heade
 
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return NextResponse.json({ error: "API key not configured on server." }, { status: 500 });
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json({ error: "GROQ_API_KEY not configured on server." }, { status: 500 });
     }
 
     const body = await req.json();
     const { mode, fileBase64, mimeType, chatHistory, jobDescription } = body;
+
+    const isImage = mimeType?.startsWith("image/");
+    const isPdf = mimeType === "application/pdf";
+    const model = isImage ? VISION_MODEL : TEXT_MODEL;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let messages: any[] = [];
 
     if (mode === "document-chat") {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      messages = (chatHistory as { role: string; content: string }[]).map((msg, idx) => {
+      const built: any[] = [];
+      for (const [idx, msg] of (chatHistory as { role: string; content: string }[]).entries()) {
         if (idx === 0 && fileBase64) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const fileContent: any[] = [];
-          if (mimeType === "application/pdf") {
-            fileContent.push({ type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } });
-          } else if (mimeType?.startsWith("image/")) {
-            fileContent.push({ type: "image", source: { type: "base64", media_type: mimeType, data: fileBase64 } });
+          if (isImage) {
+            built.push({
+              role: "user",
+              content: [
+                { type: "image_url", image_url: { url: `data:${mimeType};base64,${fileBase64}` } },
+                { type: "text", text: msg.content },
+              ],
+            });
           } else {
-            const text = Buffer.from(fileBase64, "base64").toString("utf-8");
-            fileContent.push({ type: "text", text: `Document contents:\n\n${text}` });
+            const text = await extractText(fileBase64, mimeType);
+            built.push({ role: "user", content: `Document contents:\n\n${text}\n\n---\n\n${msg.content}` });
           }
-          fileContent.push({ type: "text", text: msg.content });
-          return { role: "user", content: fileContent };
+        } else {
+          built.push({ role: msg.role, content: msg.content });
         }
-        return { role: msg.role, content: msg.content };
-      });
+      }
+      messages = [{ role: "system", content: SYSTEM_PROMPTS["document-chat"] }, ...built];
     } else if (mode === "receipt") {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const content: any[] = [];
-      if (mimeType?.startsWith("image/")) {
-        content.push({ type: "image", source: { type: "base64", media_type: mimeType, data: fileBase64 } });
-      } else if (mimeType === "application/pdf") {
-        content.push({ type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } });
-      }
-      content.push({ type: "text", text: "Please analyze this receipt/invoice and extract all tax and financial details in a structured format." });
-      messages = [{ role: "user", content }];
+      const userContent = isImage
+        ? [
+            { type: "image_url", image_url: { url: `data:${mimeType};base64,${fileBase64}` } },
+            { type: "text", text: "Analyze this receipt/invoice and extract all tax and financial details in a structured format." },
+          ]
+        : `Receipt contents:\n\n${await extractText(fileBase64, mimeType)}\n\nExtract all tax and financial details.`;
+      messages = [
+        { role: "system", content: SYSTEM_PROMPTS["receipt"] },
+        { role: "user", content: userContent },
+      ];
     } else if (mode === "resume") {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const content: any[] = [];
-      if (mimeType === "application/pdf") {
-        content.push({ type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } });
-      } else if (mimeType?.startsWith("image/")) {
-        content.push({ type: "image", source: { type: "base64", media_type: mimeType, data: fileBase64 } });
-      }
-      content.push({ type: "text", text: `Job Description:\n\n${jobDescription}\n\nPlease analyze this resume against the job description above.` });
-      messages = [{ role: "user", content }];
+      const userContent = isImage
+        ? [
+            { type: "image_url", image_url: { url: `data:${mimeType};base64,${fileBase64}` } },
+            { type: "text", text: `Job Description:\n\n${jobDescription}\n\nAnalyze this resume against the job description.` },
+          ]
+        : `Resume:\n\n${await extractText(fileBase64, mimeType)}\n\nJob Description:\n\n${jobDescription}`;
+      messages = [
+        { role: "system", content: SYSTEM_PROMPTS["resume"] },
+        { role: "user", content: userContent },
+      ];
     }
 
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-6",
+    console.log(`[demo] mode=${mode} model=${model} isPdf=${isPdf} base64_len=${fileBase64?.length ?? 0}`);
+    const response = await groq.chat.completions.create({
+      model,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      messages: messages as any,
       max_tokens: 2048,
-      system: SYSTEM_PROMPTS[mode] ?? "",
-      messages,
     });
 
-    const text = response.content[0].type === "text" ? response.content[0].text : "";
+    const text = response.choices[0]?.message?.content ?? "";
     return NextResponse.json({ text });
   } catch (err) {
     console.error("Demo API error:", err);
