@@ -240,6 +240,7 @@ export default function Contact() {
                       <option>AI & Machine Learning</option>
                       <option>Cloud & DevOps</option>
                       <option>Backend Engineering</option>
+                      <option>AI Workshop &amp; Bootcamp</option>
                       <option>Business Enquiry — AI Product Development</option>
                       <option>Not Sure (Need Guidance)</option>
                     </select>

@@ -13,7 +13,7 @@ import TeachingApproach from "@/components/TeachingApproach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import AIServicesPopup from "@/components/AIServicesPopup";
+import WorkshopModal from "@/components/WorkshopModal";
 
 
 const jsonLd = {
@@ -96,7 +96,7 @@ export default function Home() {
         <Contact />
         <Footer />
         <Chatbot />
-        <AIServicesPopup />
+        <WorkshopModal />
       </main>
     </>
   );
